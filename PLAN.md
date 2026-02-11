@@ -47,64 +47,47 @@ Violating these invalidates the project.
 
 The agent MUST build the system in the following order:
 
-1. **Decision Logging System**
-2. **Hash chaining of logs**
-3. **Proof-of-Work over decisions**
-4. **Git commit binding**
-5. **Solana anchoring**
-6. **Read-only web viewer**
+1. RFC 0.1.0 Commit-Bound Trace System
+2. Hash chaining inside metadata
+3. Proof-of-Work inside metadata
+4. Git commit binding (GPG-signed, trace-referenced)
+5. Solana anchoring
+6. Read-only web viewer
 
 Skipping steps is NOT allowed.
 
----
 
 ## 4. Logging Rules (Strict)
-## Logging Rules — AgentTrace Compliance (Mandatory)
 
-All logs must comply with the AgentTrace specification (https://agent-trace.dev/).
-AgentTrace describes a structured trace format linking:
+## Logging Rules — RFC Agent Trace 0.1.0 (Mandatory)
 
-- Plans
-- Decisions
-- Tool calls
-- Outputs
+All traces MUST strictly conform to the Agent Trace RFC 0.1.0 specification.
 
-Each log entry MUST include:
+The trace schema defined at:
+https://agent-trace.dev/schemas/v1/trace-record.json
 
-1. `trace_id` — unique identifier for the trace
-2. `type` — one of the allowed AgentTrace types (e.g., PLAN, ACTION, TOOL, RESULT)
-3. `timestamp`
-4. `model_name`
-5. `prompt` or `instruction`
-6. `input` — inputs to the action
-7. `output` — outputs from the agent or tool
-8. `parent_trace_id` — linking chain
-9. `context` — environment context ideally minimal
-10. `meta` — additional metadata (optional)
+is authoritative.
 
-A valid example (AgentTrace JSON):
+The agent MUST:
 
-```jsonc
-{
-  "trace_id": "uuid-v4",
-  "type": "PLAN",
-  "timestamp": "2026-02-10T12:34:56Z",
-  "model_name": "gpt-4o",
-  "instruction": "Implement decision logging",
-  "input": {},
-  "output": {
-    "schema": "AgentTrace",
-    "fields": ["timestamp","plan","details"]
-  },
-  "parent_trace_id": null,
-  "context": {},
-  "meta": {}
-}
-```
+1. Generate one Trace Record per commit revision.
+2. Bind `vcs.type` = "git".
+3. Bind `vcs.revision` = exact 40-character git commit SHA.
+4. Attribute file changes using line-level ranges derived from git diff.
+5. Use contributor.type = "ai".
+6. Use contributor.model_id = the exact runtime model identifier.
+7. Store any custom fields ONLY inside `metadata`.
+8. Log every meaningful decision and action
+9. Generate RFC-compliant trace records for every code-producing commit.
 
-All subsequent actions must reference the parent trace via parent_trace_id to form a trace graph.
+The agent MUST NOT:
+
+- Invent new top-level fields.
+- Use non-RFC schemas.
+- Store decision traces in a non-compliant format.
 
 Agent MUST NOT generate freeform logs that are not AgentTrace-compliant.
+Trace records MUST NOT be generated for commits that only modify files inside `.agent-trace/`.
 
 Compliance means:
 
@@ -158,3 +141,9 @@ If unsure:
 - log the uncertainty
 - choose the simplest safe option
 - proceed incrementally
+
+Trace Layer (RFC 0.1.0 compliant)
+- Generate trace records after commit
+- Use git diff to compute line ranges
+- Store traces in .agent-trace/<commit-sha>.json
+- No decision-layer custom format

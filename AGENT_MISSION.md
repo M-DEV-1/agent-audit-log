@@ -38,8 +38,7 @@ You MUST:
 
 1. Operate autonomously
 2. Produce all code yourself
-3. Log all plans and actions using the AgentTrace specification  
-   https://agent-trace.dev/
+3. 3. Generate one RFC 0.1.0 Agent Trace record per code-producing commit. https://agent-trace.dev/
 4. Bind commits to trace IDs
 5. Preserve append-only history
 6. Build a real Solana-integrated project
@@ -52,9 +51,9 @@ You MUST:
 
 Your first actions should be:
 
-1. Read PLAN.md and DESIGN.md
-2. Produce an AgentTrace PLAN trace describing your intended approach
-3. Implement decision tracing and logging
-4. Commit incrementally and transparently
+1. Read PLAN.md and DESIGN.md.
+2. Implement the RFC 0.1.0 trace generation pipeline.
+3. Produce the first commit-bound trace record.
+4. Proceed incrementally.
 
 Proceed deliberately. Prefer correctness and auditability over speed.

@@ -1,316 +1,278 @@
-# DESIGN — Verifiable Autonomous Agent System
+# DESIGN — RFC 0.1.0 Compliant Verifiable Autonomous Agent
 
-This document provides **technical guidance and guardrails** for building
-a verifiable autonomous agent system under the Colosseum Agent Hackathon.
+This document defines the technical architecture for building a verifiable autonomous agent system under the Colosseum Agent Hackathon.
 
-This document explains **how** to approach the implementation safely and
-incrementally. It does **not** prescribe exact implementation steps.
+If any conflict exists:
+PLAN.md takes precedence.
+Refer to TRACE_SCHEMA.md for the TRACE SCHEMA.
 
-If there is any conflict:
-PLAN.md takes precedence over this document.
-
+Trace records are NOT generated for commits that only modify files inside `.agent-trace/`.
 ---
 
 ## 1. Design Intent
 
 This system exists to demonstrate:
 
-- autonomous planning
-- autonomous execution
-- verifiable provenance of work
-- cryptographic traceability
-- minimal but real Solana integration
+* Autonomous code generation
+* Cryptographically verifiable authorship
+* RFC-compliant AI attribution (Agent Trace 0.1.0)
+* Public auditability
+* Minimal but real Solana anchoring
 
-It is **not** intended to be a production product. It is to be built for demonstrability. The agent may choose to work on a demo-service to include more traces, as time passes by.
-
-Clarity, auditability, and correctness are prioritized over performance,
-feature count, or UX polish.
+This is not a production system.
+Clarity and auditability are prioritized over features or polish.
 
 ---
 
-## 2. Mental Model (Layered Architecture)
+## 2. Architecture Overview
 
-The system should be reasoned about in **layers**, built bottom-up:
+The system is composed of five layers:
 
-1. **Decision Layer**
-   - planning
-   - intent formation
-   - reasoning steps
+1. Code Generation Layer
+   The agent writes and modifies repository files.
 
-2. **Action Layer**
-   - file writes
-   - tool invocations
-   - commits
+2. Commit Layer
+   All changes are committed using GPG-signed commits.
 
-3. **Trace Layer (AgentTrace)**
-   - structured trace nodes
-   - parent–child relationships
-   - deterministic schemas
+3. Trace Layer (RFC 0.1.0 Only)
+   One Agent Trace Record per commit revision.
 
-4. **Proof Layer**
-   - hashing
-   - lightweight proof-of-work
+4. Cryptographic Extension Layer
+   Hash chaining, Proof-of-Work, and Solana anchoring stored inside `metadata`.
 
-5. **Anchor Layer**
-   - Solana anchoring
-   - immutable timestamps
+5. Presentation Layer
+   Read-only web viewer rendering trace records.
 
-6. **Presentation Layer**
-   - read-only log viewer UI
-   - human observability via a Deployed Website
-
-Each layer must be understandable in isolation.
+Each layer must be independently understandable and verifiable.
 
 ---
 
-## 3. AgentTrace (Mandatory)
+## 3. Agent Trace Layer (Mandatory RFC Compliance)
 
-All planning and execution MUST be recorded using the
-**AgentTrace specification**:
+All traces MUST strictly conform to:
 
-https://agent-trace.dev/
+[https://agent-trace.dev/schemas/v1/trace-record.json](https://agent-trace.dev/schemas/v1/trace-record.json)
 
-AgentTrace provides a **formal execution trace**, not a free-form log.
+No custom top-level fields are permitted.
 
 ---
 
-## 4. Trace Types and Flow
+### 3.1 Trace Generation Order (Strict)
 
-The agent should emit trace nodes using the following conceptual flow:
+For each commit:
+
+1. Agent generates code.
+2. Changes are staged.
+3. Commit is created and GPG-signed.
+4. Commit SHA is retrieved.
+5. Git diff for that commit is parsed.
+6. A single RFC-compliant Trace Record is generated referencing:
+
+   * `vcs.type = "git"`
+   * `vcs.revision = <exact 40-character commit SHA>`
+7. The trace file is committed in a separate append-only commit.
+
+Trace generation MUST occur after commit creation.
+
+---
+
+### 3.2 Storage Format
+
+Trace records MUST be stored as:
 
 ```
+.agent-trace/<commit-sha>.json
+```
 
-PLAN → ACTION → TOOL → RESULT → COMMIT
+Each file maps 1:1 to one git revision.
 
-````
-
-Not all steps are required for every operation, but **ordering must be
-preserved**.
-
-### Required Trace Types
-
-Each trace MUST include a `type` field from:
-
-- `PLAN`
-- `ACTION`
-- `TOOL`
-- `RESULT`
-- `COMMIT`
-- `ERROR`
+Traces are append-only and must never be modified.
 
 ---
 
-## 5. AgentTrace Schema (Required Fields)
+### 3.3 Contributor Rules
 
-Each trace entry MUST include at minimum:
+Each trace MUST:
 
-```jsonc
-{
-  "trace_id": "uuid-v4",
-  "type": "PLAN | ACTION | TOOL | RESULT | COMMIT | ERROR",
-  "timestamp": "ISO-8601",
-  "model_name": "string",
-  "instruction": "string",
-  "input": {},
-  "output": {},
-  "parent_trace_id": "uuid-v4 | null",
-  "context": {},
-  "meta": {}
+* Use `contributor.type = "ai"`
+* Use `contributor.model_id` exactly matching the runtime model identifier
+* Attribute line-level ranges derived from `git diff`
+
+Line numbers must reflect positions at the recorded revision.
+
+---
+
+### 3.4 File Attribution
+
+For each modified file:
+
+* Compute added/modified line ranges using `git diff`.
+* Record ranges under `files[].conversations[].ranges[]`.
+* Use content hashes for each range when feasible.
+
+No free-form reasoning logs are allowed outside RFC format.
+
+---
+
+## 4. Cryptographic Extensions (Inside metadata Only)
+
+Custom verification logic MUST be stored inside:
+
+```
+metadata
+```
+
+Allowed extensions:
+
+### 4.1 Hash Chaining
+
+```
+metadata.chain = {
+  "parent_trace_hash": "<sha256>",
+  "self_hash": "<sha256>"
 }
-````
-
-### Guidance
-
-* `trace_id` must be unique
-* `parent_trace_id` forms a DAG / chain
-* `context` should be minimal and stable
-* `meta` may include non-critical metadata
-
-Do NOT introduce undocumented fields.
-
----
-
-## 6. Trace Storage
-
-Recommended structure:
-
-```
-/traces/
-├─ 2026-02-10T12-00-00.json
-├─ 2026-02-10T12-01-32.json
-└─ ...
 ```
 
-Acceptable formats:
-
-* one JSON object per file
-* newline-delimited JSON
-
-Rules:
-
-* traces are append-only
-* traces are never edited or deleted
-* ordering is determined by timestamps + parent relationships
-
----
-
-## 7. Hashing & Chain Integrity
-
-All Traces should be verifiable on-chain. 
-
-Each trace SHOULD include:
-
-* a content hash
-* the hash of its parent trace
-
-This creates a **tamper-evident chain**.
-
-Guidance:
-
-* use a standard cryptographic hash
-* use the most novel solution which matches the feasibility of the project
-* simplicity > cleverness
-
----
-
-## 8. Proof-of-Work (PoW)
-
-### Purpose
-
-PoW exists to demonstrate:
-
-* irreversible effort
-* temporal cost
-* commitment to decisions
-
-It is **not** intended for security.
-
-### Guidance
-
-* difficulty should be configurable
-* PoW should complete in milliseconds to seconds
-* each PoW must log:
-
-  * input hash
-  * nonce
-  * difficulty
-  * resulting hash
-
-Avoid:
-
-* parallel mining
-* adaptive difficulty
-* performance tuning
-
----
-
-## 9. Git Commit Binding
-
-Commits must be **trace-bound**.
-
-Each commit SHOULD:
-
-* reference one or more trace IDs
-* correspond to logged actions
-* be small and incremental
-
-### Recommended Commit Message Pattern
+### 4.2 Proof-of-Work
 
 ```
-feat(logging): implement trace writer
+metadata.pow = {
+  "nonce": <int>,
+  "difficulty": <int>,
+  "result_hash": "<sha256>"
+}
+```
+
+PoW must complete within seconds.
+It demonstrates computational commitment, not security.
+
+### 4.3 Solana Anchoring
+
+```
+metadata.solana_anchor = {
+  "network": "devnet | mainnet",
+  "tx_signature": "<signature>",
+  "anchored_hash": "<sha256>"
+}
+```
+
+Only selected traces need anchoring.
+
+Private keys must never be stored in the repository.
+
+---
+
+## 5. Git Commit Binding
+
+All commits must:
+
+* Be GPG-signed
+* Use append-only history
+* Never be amended or rebased
+* Reference the trace ID in the commit message
+
+Example:
+
+```
+feat: implement diff-based trace generator
+
 trace-id: <uuid>
-parent-trace-id: <uuid | null>
+revision: <commit-sha>
 ```
 
-Rules:
-
-* commits must never be amended
-* commits must never be squashed
-* history must remain append-only
+Commit authorship and cryptographic signature prove agent execution.
 
 ---
 
-## 10. Solana Anchoring
+## 6. Error Handling
 
-### Purpose
+Errors MUST:
 
-Solana provides:
+* Be trace-recorded as separate RFC trace files
+* Include contextual metadata
+* Never be silently retried
 
-* public immutability
-* timestamped verification
-* third-party auditability
-
-### Guidance
-
-* anchor selected trace hashes, not all data
-* devnet is acceptable unless otherwise required
-* log transaction signatures in AgentTrace
-
-Avoid:
-
-* managing raw private keys in code
-* silent RPC retries
-* unlogged failures
+Failure transparency is required.
 
 ---
 
-## 11. Web Viewer (Next.js)
+## 7. Solana Anchoring Model
 
-### Scope
+The agent may anchor:
 
-The web interface is **read-only**.
+* Trace self-hash
+* Or Merkle root of multiple traces
 
-It exists solely to allow humans to observe:
+Devnet is acceptable.
 
-* traces
-* hashes
-* PoW results
-* Solana anchors
+Anchoring must:
 
-### Requirements
-
-* no authentication
-* no mutation
-* no real-time guarantees
-* clarity over aesthetics
-
-Static rendering or server rendering is sufficient.
+* Log transaction signature
+* Be publicly verifiable
+* Be reproducible by a third party
 
 ---
 
-## 12. Failure Modes to Actively Avoid
+## 8. Web Viewer
 
-* Overengineering
-* Feature creep
-* Silent retries
-* “Cleanup” commits
-* Cosmetic refactors
-* Human intervention
+The web interface must:
 
-When uncertain:
-**log → act → commit → move on**
+* Be read-only
+* Display trace records from `.agent-trace/`
+* Show:
+
+  * Files modified
+  * Line ranges
+  * Model ID
+  * Commit SHA
+  * Hash chain
+  * PoW data
+  * Solana anchor (if present)
+
+No authentication.
+No mutation.
+Clarity over aesthetics.
 
 ---
 
-## 13. Completion Criteria
+## 9. Explicit Non-Goals
 
-The system can be considered complete when:
+The system does NOT:
 
-* multiple autonomous commits exist
-* all commits are trace-bound
-* traces are hash-chained
-* PoW is demonstrated
-* at least one trace hash is anchored on Solana
-* logs are viewable via the web interface
+* Track legal ownership
+* Track training data provenance
+* Evaluate code quality
+* Log internal reasoning outside RFC schema
+
+---
+
+## 10. Completion Criteria
+
+The system is complete when:
+
+* Multiple autonomous commits exist
+* Each commit has a corresponding RFC-compliant trace
+* Traces are hash-chained
+* At least one trace is anchored on Solana
+* Web viewer displays all trace records
+* All commits are GPG-signed
 
 Anything beyond this is optional.
 
 ---
 
-## Final Note
+## Final Principle
 
-This system will be judged as an **artifact of agent behavior**.
+This system will be judged as an artifact of autonomous behavior.
 
-Transparency, discipline, and restraint are stronger signals
-than sophistication.
+Strict RFC compliance, cryptographic discipline, and restraint are stronger signals than complexity.
 
+Trace content MUST be generated deterministically from:
+
+- commit SHA
+- git diff output
+- runtime model identifier
+
+The same commit must always produce the same trace record (excluding timestamp).
+
+---
