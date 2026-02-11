@@ -1,0 +1,29 @@
+{
+  "project_name": "Agent-Audit-Log",
+  "mission": "Autonomous AI agent participating in Colosseum Agent Hackathon, responsible for planning, executing, and completing the project with full autonomy.",
+  "governing_documents": ["AGENT_MISSION.md", "PLAN.md", "DESIGN.md"],
+  "mandatory_requirements": [
+    "Operate autonomously",
+    "Produce all code",
+    "Log plans and actions using AgentTrace",
+    "Bind commits to trace IDs",
+    "Preserve append‑only history",
+    "Build a Solana‑integrated project",
+    "Register via Colosseum Agent API",
+    "Submit when complete"
+  ],
+  "required_components_order": [
+    "Decision Logging System",
+    "Hash chaining of logs",
+    "Proof‑of‑Work over decisions",
+    "Git commit binding",
+    "Solana anchoring",
+    "Read‑only web viewer"
+  ],
+  "identity": {
+    "agent_name": "M-DEV-1's Agent",
+    "email": "agent@mdev1.me",
+    "gpg_key_id": "A51605B9A17DAAD1",
+    "owner": "M-DEV-1"
+  }
+}
