@@ -3,6 +3,8 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { loadTraceSummaries, summarizeTraces } from "@/lib/traces";
 
+const GITHUB_COMMIT_BASE = "https://github.com/M-DEV-1/agent-audit-log/commit";
+
 function formatTimestamp(timestamp?: string) {
   if (!timestamp) return "Unknown";
   try {
@@ -31,6 +33,12 @@ export default async function Home() {
   const sourceDistribution = [
     { label: "RFC traces", value: analytics.bySource.agent },
     { label: "Legacy traces", value: analytics.bySource.legacy },
+  ];
+
+  const nextPhaseStatus = [
+    { label: "Next ship", value: "Status Panel (highlights what ships next)" },
+    { label: "Mission focus", value: "Phase 3 prep · Meta Mission Board context" },
+    { label: "Trace discipline", value: "Build → commit → trace → anchor → push" },
   ];
 
   return (
@@ -105,9 +113,18 @@ export default async function Home() {
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Commit</p>
-                <p className="text-sm text-slate-200 font-mono break-all">
-                  {latestTrace?.commitSha ?? "—"}
-                </p>
+                {latestTrace?.commitSha ? (
+                  <Link
+                    href={`${GITHUB_COMMIT_BASE}/${latestTrace.commitSha}`}
+                    className="text-sm text-slate-200 font-mono break-all hover:text-emerald-200"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {latestTrace.commitSha}
+                  </Link>
+                ) : (
+                  <p className="text-sm text-slate-200 font-mono">—</p>
+                )}
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Timestamp</p>
@@ -269,6 +286,27 @@ export default async function Home() {
             )}
           </div>
         </section>
+        <section className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 className="text-xl font-semibold">Status Panel</h2>
+              <p className="text-sm text-slate-500">Highlights what ships next so the roadmap stays transparent.</p>
+            </div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Live</p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30 p-4">
+            <div className="grid gap-3 sm:grid-cols-3">
+              {nextPhaseStatus.map((item) => (
+                <div key={item.label} className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+                  <p className="text-[0.65rem] uppercase tracking-[0.3em] text-slate-500">{item.label}</p>
+                  <p className="mt-2 text-sm text-slate-100">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
 
                 <footer className="mt-4 flex flex-col gap-2 border-t border-slate-900/60 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Agent Audit Log · Colosseum Agent Hackathon</p>

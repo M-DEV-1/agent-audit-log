@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "bda12ad2-6695-4f64-86ad-07b030636ee8",
+  "timestamp": "2026-02-12T22:06:35.038777Z",
+  "vcs": {
+    "type": "git",
+    "revision": "0db4c148779f38228c2b76fcb4d3e00fdce8632f"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 335
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): highlight upcoming shipment",
+    "parent_commit": "b9bf2dfd9afe8704c1bc2d5341a7164944f39f1a",
+    "trace_hash": "93d7a735738b2705f1bbe68018156ff4429040c71b03565dc937aeea760ec56c",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4uZ1nRCboZtswz6n34oNzMr5hbdzzgsW2mGkZmV9iArEVLvZQJQSei56B4MMk2g5z6QezrFEN71LUURJ8CrViLi4",
+      "explorer": "https://solscan.io/tx/4uZ1nRCboZtswz6n34oNzMr5hbdzzgsW2mGkZmV9iArEVLvZQJQSei56B4MMk2g5z6QezrFEN71LUURJ8CrViLi4?cluster=devnet",
+      "action_id": "56c25df3-fb27-4e4a-93a9-24383edda7e8",
+      "status": "confirmed",
+      "sponsored": true
+    },
+    "solana_tx": "4uZ1nRCboZtswz6n34oNzMr5hbdzzgsW2mGkZmV9iArEVLvZQJQSei56B4MMk2g5z6QezrFEN71LUURJ8CrViLi4"
+  }
+}
