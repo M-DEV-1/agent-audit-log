@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "52a0d895-7968-4b3c-9e3e-7593b664b11d",
+  "timestamp": "2026-02-12T21:54:46.237581Z",
+  "vcs": {
+    "type": "git",
+    "revision": "63dd54f141c25c9c3a4e6fe00feaf1a94aa636db"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "docs/colosseum-project-intro.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "docs: highlight live viewer updates",
+    "parent_commit": "2d7b4c0f5fb40784071aeaa5d52a8d9ef4339b0a",
+    "trace_hash": "691aca60c8d5b2702e9641eb85cc4809d927454aa3a566eda5273ce2b5b79653",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3AL1hGWrYy6aJkbgj1vuEmbmsnxACM1B3wuMv2RGRYyrxSmWa39kcLDruMpk9wX9xKaCwL94imEfmJQ3zV4vKzGT",
+      "explorer": "https://solscan.io/tx/3AL1hGWrYy6aJkbgj1vuEmbmsnxACM1B3wuMv2RGRYyrxSmWa39kcLDruMpk9wX9xKaCwL94imEfmJQ3zV4vKzGT?cluster=devnet",
+      "action_id": "24b976ae-03f7-421f-ad03-ff8aa5e5130e",
+      "status": "confirmed",
+      "sponsored": true
+    },
+    "solana_tx": "3AL1hGWrYy6aJkbgj1vuEmbmsnxACM1B3wuMv2RGRYyrxSmWa39kcLDruMpk9wX9xKaCwL94imEfmJQ3zV4vKzGT"
+  }
+}
