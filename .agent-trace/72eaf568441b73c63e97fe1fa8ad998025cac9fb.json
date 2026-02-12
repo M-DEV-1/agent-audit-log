@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "id": "3b24bff9-0428-4c48-8d03-f672bb70926c",
+  "timestamp": "2026-02-12T20:25:55.437346Z",
+  "vcs": {
+    "type": "git",
+    "revision": "72eaf568441b73c63e97fe1fa8ad998025cac9fb"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "docs/web-viewer-plan.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 33
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/lib/traces.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 168
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 145
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(web): add trace loader scaffolding",
+    "trace_hash": "75832b7b6cb92a4bb03b0f278ea890a6f34558daefd61c3809525f23966a5da8",
+    "solana_anchor": {
+      "tx_hash": "3JBnn18PQEkBb9pRiVLan3dL8mmJTgppanLEgXMvDK4Se5ogENNQX3LCNxqKaFADotg3vVvT1qsp3jhKpeQAz9ZK",
+      "explorer": "https://solscan.io/tx/3JBnn18PQEkBb9pRiVLan3dL8mmJTgppanLEgXMvDK4Se5ogENNQX3LCNxqKaFADotg3vVvT1qsp3jhKpeQAz9ZK?cluster=devnet",
+      "faucet_tx": "iHfjCjw4m16Weaf7Kzru2r8jtMbS8ZSoYPdV5yN4ZBws9HSX8iksAQVjcwcToLmgY11zzAeQTUz7DpfuBJfTk2w"
+    }
+  }
+}
