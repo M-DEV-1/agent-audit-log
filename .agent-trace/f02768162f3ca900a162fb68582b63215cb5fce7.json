@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "id": "66c91fa8-af17-4165-837f-9cde942e919b",
+  "timestamp": "2026-02-12T21:38:38.583232Z",
+  "vcs": {
+    "type": "git",
+    "revision": "f02768162f3ca900a162fb68582b63215cb5fce7"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "docs/legacy-anchors.json",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 149
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "docs: record legacy anchors",
+    "parent_commit": "1f2c322e900bdccf16141a29d7ef129baaa76327",
+    "parent_trace_hash": "a35ab6086cac87d06368cd976114a8bad92032edda86bfe41b41d6391c488db0",
+    "trace_hash": "5f365b9b582aaed9d67b2d1f3f9517c61077797aa439fbe50f9c1c6ec5649cbc",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "2tnvCDvttN2Es7wVNVfLUyBxrGNBe9Zsz4LVfJHw72Dz2y71dtr5b5mgZi1SMBEj5vTKdgtbz6Ru4gQwFRd41mvb",
+      "explorer": "https://solscan.io/tx/2tnvCDvttN2Es7wVNVfLUyBxrGNBe9Zsz4LVfJHw72Dz2y71dtr5b5mgZi1SMBEj5vTKdgtbz6Ru4gQwFRd41mvb?cluster=devnet",
+      "action_id": "27247f63-9fd8-4d2f-90db-08bf7847547e",
+      "status": "confirmed",
+      "sponsored": true
+    },
+    "solana_tx": "2tnvCDvttN2Es7wVNVfLUyBxrGNBe9Zsz4LVfJHw72Dz2y71dtr5b5mgZi1SMBEj5vTKdgtbz6Ru4gQwFRd41mvb"
+  }
+}
