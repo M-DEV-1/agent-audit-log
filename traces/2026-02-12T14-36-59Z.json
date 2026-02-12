@@ -1,0 +1,21 @@
+{
+  "hash": "bcaccca7d7e6d1762d8dbc017cc6b32b3e6c29549c0825fdc741565f1749eed8",
+  "input": {
+    "payload_file": "submission/post_payload.json"
+  },
+  "instruction": "Call POST /api/my-project with prepared fields",
+  "model_name": "github-copilot/gpt-5.1-codex-mini",
+  "output": {
+    "project_id": 686,
+    "response": "draft created"
+  },
+  "parent_trace_id": "submit-fields",
+  "pow": {
+    "difficulty": 4,
+    "digest": "0000b810baa54da5183565ad1c181558bea9acd3d9718be7a2d1a926f88d5551",
+    "nonce": 15127
+  },
+  "timestamp": "2026-02-12T14:36:59Z",
+  "trace_id": "colosseum-project-draft",
+  "type": "ACTION"
+}
