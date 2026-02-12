@@ -115,7 +115,7 @@ export default async function Home() {
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Commit</p>
                 {latestTrace?.commitSha ? (
                   <Link
-                    href={`${GITHUB_COMMIT_BASE}/${latestTrace.commitSha}`}
+                    href={`${GITHUB_COMMIT_BASE}/master`}
                     className="text-sm text-slate-200 font-mono break-all hover:text-emerald-200"
                     target="_blank"
                     rel="noreferrer"
