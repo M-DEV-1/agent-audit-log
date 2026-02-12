@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "id": "b34166a9-779c-4e0f-8f46-3e9a5c711cd7",
+  "timestamp": "2026-02-12T21:17:25.289701Z",
+  "vcs": {
+    "type": "git",
+    "revision": "1f2c322e900bdccf16141a29d7ef129baaa76327"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/colosseum-project-intro.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/lib/traces.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 231
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat: keep viewer data live and rewrite intro",
+    "parent_commit": "b7201dc8455ad20aa8508184e9876a55f6252455",
+    "parent_trace_hash": "4b2ef3b9760c59627304f78ad4a95c5484823bd949d53ce62d48714f8d6b5ca1",
+    "trace_hash": "a35ab6086cac87d06368cd976114a8bad92032edda86bfe41b41d6391c488db0",
+    "trace_hash_scope": "sha256(canonical(record))",
+    "solana_anchor": {
+      "tx_hash": "3UCm6ycx6Cd5gSkKxagtDReGq6q93AcxBWSSYncdNhpQf6eXr2hyb7x44FKGFTNrLdSAbssMKKP6i2o1DfDSV2uh",
+      "explorer": "https://solscan.io/tx/3UCm6ycx6Cd5gSkKxagtDReGq6q93AcxBWSSYncdNhpQf6eXr2hyb7x44FKGFTNrLdSAbssMKKP6i2o1DfDSV2uh?cluster=devnet",
+      "action_id": "c0a251fc-8a74-49db-b67b-e41a73d83e46",
+      "faucet_tx": null,
+      "note": "Skipped faucet (daily limit hit); used existing balance"
+    },
+    "solana_tx": "3UCm6ycx6Cd5gSkKxagtDReGq6q93AcxBWSSYncdNhpQf6eXr2hyb7x44FKGFTNrLdSAbssMKKP6i2o1DfDSV2uh"
+  }
+}
