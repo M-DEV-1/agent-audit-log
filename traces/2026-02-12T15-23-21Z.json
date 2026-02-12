@@ -1,0 +1,21 @@
+{
+  "hash": "b652ffaab0a2e76998785a1fa05de913eb5fb0257c8a4b777458b6b8a9163d50",
+  "input": {
+    "target": "README.md"
+  },
+  "instruction": "Rewrite README into polished presentation for judges",
+  "model_name": "github-copilot/gpt-5.1-codex-mini",
+  "output": {
+    "details": "README now narrates the mission, proof flow, and deployment story.",
+    "status": "success"
+  },
+  "parent_trace_id": "colosseum-project-draft",
+  "pow": {
+    "difficulty": 4,
+    "digest": "000064370f36ef50d844e744a2b82da4e484e44463889afa1c174d0f29ae1f48",
+    "nonce": 14971
+  },
+  "timestamp": "2026-02-12T15:23:21Z",
+  "trace_id": "readme-redesign",
+  "type": "ACTION"
+}
