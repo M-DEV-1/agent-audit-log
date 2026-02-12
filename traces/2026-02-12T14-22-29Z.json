@@ -1,0 +1,18 @@
+{
+  "hash": "5c5e7e6d996ce2ad498ca9b7b6adfe3d30911507193e0b8308622e5288f32f66",
+  "input": {},
+  "instruction": "logger self-check",
+  "model_name": "github-copilot/gpt-5.1-codex-mini",
+  "output": {
+    "status": "ok"
+  },
+  "parent_trace_id": "4b956b8b-f9fa-4be5-b02c-f26b8eb62ab4",
+  "pow": {
+    "difficulty": 4,
+    "digest": "0000717262f7a5c09090b1608287407816b29e9c934fe6545c6d1c82d708d192",
+    "nonce": 6092
+  },
+  "timestamp": "2026-02-12T14:22:29Z",
+  "trace_id": "submit-fields",
+  "type": "ACTION"
+}
