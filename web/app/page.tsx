@@ -99,19 +99,19 @@ export default async function Home() {
               )}
             </div>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Trace ID</p>
-                <p className="text-sm text-slate-200">{latestTrace?.id ?? "–"}</p>
+                <p className="text-sm text-slate-200 break-words">{latestTrace?.id ?? "–"}</p>
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Commit</p>
-                <p className="text-sm text-slate-200 font-mono">
+                <p className="text-sm text-slate-200 font-mono break-all">
                   {latestTrace?.commitSha ?? "—"}
                 </p>
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Timestamp</p>
-                <p className="text-sm text-slate-200">{formatTimestamp(latestTrace?.timestamp)}</p>
+                <p className="text-sm text-slate-200 break-words">{formatTimestamp(latestTrace?.timestamp)}</p>
               </div>
             </div>
             <p className="mt-4 text-sm text-slate-400">
