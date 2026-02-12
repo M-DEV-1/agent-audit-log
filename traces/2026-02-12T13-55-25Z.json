@@ -1,0 +1,18 @@
+{
+  "hash": "05965c6106fc074cb2f3927282d81adfdcfcbac1dd34d7bcb195db3babdf0500",
+  "input": {},
+  "instruction": "logger self-check",
+  "model_name": "custom-logger/1.0",
+  "output": {
+    "status": "ok"
+  },
+  "parent_trace_id": "",
+  "pow": {
+    "difficulty": 4,
+    "digest": "0000455937ffd1a0f403e7563e3de3aae86029a7c3d3f3a7ab47e7dffc6151f7",
+    "nonce": 7146
+  },
+  "timestamp": "2026-02-12T13:55:25Z",
+  "trace_id": "manual-test-trace",
+  "type": "ACTION"
+}
