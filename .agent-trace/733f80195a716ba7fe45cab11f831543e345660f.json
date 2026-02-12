@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "id": "b768a1c0-9a8e-4eed-bdef-4c45b5530659",
+  "timestamp": "2026-02-12T19:24:08.454182Z",
+  "vcs": {
+    "type": "git",
+    "revision": "733f80195a716ba7fe45cab11f831543e345660f"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "web/next.config.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 5,
+              "end_line": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/package.json",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 31,
+              "end_line": 31
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/package-lock.json",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 11763
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "chore: remove legacy web-old bundle and update viewer deps",
+    "removed_files": [
+      "web-old/.gitignore",
+      "web-old/app/globals.css",
+      "web-old/app/layout.tsx",
+      "web-old/app/page.tsx",
+      "web-old/components.json",
+      "web-old/components/lib/utils.ts",
+      "web-old/next-env.d.ts",
+      "web-old/next.config.mjs",
+      "web-old/package-lock.json",
+      "web-old/package.json",
+      "web-old/postcss.config.mjs",
+      "web-old/tailwind.config.ts",
+      "web-old/tsconfig.json"
+    ]
+  }
+}
