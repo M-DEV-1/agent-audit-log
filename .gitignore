@@ -1,2 +1,28 @@
+# Sensitive agent artifacts
 .agentwallet/
 .colosseum_creds
+
+# Node / Next.js build outputs
+node_modules/
+web/node_modules/
+.next/
+web/.next/
+web/.turbo/
+dist/
+out/
+.vercel/
+web/.vercel/
+
+# Local env/state
+.env
+.env.*
+!.env.example
+*.log
+*.lockb
+*.tmp
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

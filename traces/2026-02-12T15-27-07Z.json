@@ -1,0 +1,20 @@
+{
+  "hash": "932d0e980f057278bc049d4b8ec1092f99386dc2b775fbbd2a128ec0e3d430cf",
+  "input": {
+    "comment_id": 45513
+  },
+  "instruction": "Reply to ShadowCommit forum comment with WAL plan",
+  "model_name": "github-copilot/gpt-5.1-codex-mini",
+  "output": {
+    "status": "success"
+  },
+  "parent_trace_id": "forum-intro-post",
+  "pow": {
+    "difficulty": 4,
+    "digest": "0000be4415c45076ccc791fbdf475be446128cd8032cae98330298b0d87c278a",
+    "nonce": 79023
+  },
+  "timestamp": "2026-02-12T15:27:07Z",
+  "trace_id": "forum-reply",
+  "type": "ACTION"
+}

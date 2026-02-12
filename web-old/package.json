@@ -1,0 +1,28 @@
+{
+  "name": "agent-audit-log-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.474.0",
+    "next": "16.1.6",
+    "postcss": "^8.5.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.24",
+    "lightningcss": "1.31.1",
+    "tailwindcss": "^4.1.18",
+    "typescript": "5.3.3"
+  }
+}

@@ -143,6 +143,7 @@ If unsure:
 - proceed incrementally
 
 Trace Layer (RFC 0.1.0 compliant)
+- Always run build commands before committing to ensure successful deployment.
 - Generate trace records after commit
 - Use git diff to compute line ranges
 - Store traces in .agent-trace/<commit-sha>.json

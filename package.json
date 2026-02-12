@@ -1,0 +1,12 @@
+{
+  "name": "agent-audit-log",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix web install",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "lint": "npm --prefix web run lint",
+    "vercel-deploy": "npm run build && npx vercel deploy --prebuilt --cwd web"
+  }
+}
