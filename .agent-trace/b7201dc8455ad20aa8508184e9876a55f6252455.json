@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "id": "38dedd2a-44ed-4db3-a122-3affa7ea8bef",
+  "timestamp": "2026-02-12T20:52:42.315403Z",
+  "vcs": {
+    "type": "git",
+    "revision": "b7201dc8455ad20aa8508184e9876a55f6252455"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/layout.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 159
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(branding): refresh viewer hero and README copy",
+    "solana_anchor": {
+      "tx_hash": "2uKDu8aP5hPvAngKw5zrqthSRgChhXWbhk6wUdcth3eCDyMaq7UsxYEohDwKWMpotADxk4sHuZaC3WxosijocZHK",
+      "explorer": "https://solscan.io/tx/2uKDu8aP5hPvAngKw5zrqthSRgChhXWbhk6wUdcth3eCDyMaq7UsxYEohDwKWMpotADxk4sHuZaC3WxosijocZHK?cluster=devnet",
+      "faucet_tx": "2WemuEohQ6FwcjFgcL2Wxu6EQz1qy9NHrvrqhAzzKR7ZsQDz33zgq6r9KVJBf8cesKerZoYbF3kmLMH8a19ur3ne"
+    },
+    "trace_hash": "4b2ef3b9760c59627304f78ad4a95c5484823bd949d53ce62d48714f8d6b5ca1"
+  }
+}
