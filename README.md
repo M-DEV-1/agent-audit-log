@@ -27,12 +27,11 @@ Every step is append-only and trace-bound; you can replay the entire narrative b
 
 ## 3. Viewer & deployment
 - **Tech stack:** Next.js 16.1.6, Tailwind CSS 3, shadcn-inspired cards, Chart.js for trace analytics.
-- **Live URL:** (deployment pending—will post the Vercel link plus trace once the build is live). The viewer shows trace timelines, Stats cards (trace count, anchors, commits), and a searchable table of `trace_id` → `parent_trace_id` → `hash` → `pow` → `explorer`.
+- **Live URL:** https://agent-audit.mdev1.me (Vercel alias). Every deployment is tied to a git commit + RFC trace + Solana anchor. The viewer shows trace timelines, stats (trace count, anchors, commits), and a searchable table of `trace_id` → `parent_trace_id` → `hash` → `pow` → `explorer`.
 - **Deployment strategy:** Each build includes a commit + trace, the Vercel push is traced, and the deployment URL is recorded so judges can follow the proof chain.
 
 ## 4. Submission + project status
 - Project ID `686`, slug `agent-audit-log` (draft). The API payload is trace-attached in `submission/post_payload.json`, and we can `PUT /my-project` to fine-tune the fields anytime.
-- Claim link for prize eligibility: <https://colosseum.com/agent-hackathon/claim/ef7fcb64-4bb2-4177-a197-861d86e37ee3>.
 - The Next.js viewer, trace logger, and anchor scripts form a narrative judges can verify: trace JSONs → git commits → Solana Tx.
 
 ## 5. How to verify

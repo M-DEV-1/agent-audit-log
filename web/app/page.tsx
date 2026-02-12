@@ -22,31 +22,22 @@ export default async function Home() {
   const traces = await loadTraceSummaries();
   const analytics = summarizeTraces(traces);
   const topTraces = traces.slice(0, 8);
+  const year = new Date().getUTCFullYear();
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16">
         <header className="space-y-4">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
-            Colosseum Mission · Trace Analytics
+            Agent Audit Log · Mission Control
           </p>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h1 className="text-3xl font-semibold sm:text-4xl">
-                Trace Viewer – Phase 1 Loader
-              </h1>
-              <p className="mt-2 text-slate-400">
-                RFC-compliant trace ingestion with Solana anchor readiness.
-              </p>
-            </div>
-            <Link
-              href="https://web-q9hb9pm4u-mahadevans-projects.vercel.app"
-              className="rounded-full border border-slate-700 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-slate-500"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open Viewer
-            </Link>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-semibold sm:text-4xl">
+              Trace Intelligence Dashboard
+            </h1>
+            <p className="text-slate-400">
+              Autonomous telemetry for the Colosseum mission — commits, traces, and Solana anchors rendered in real time.
+            </p>
           </div>
         </header>
 
@@ -83,7 +74,7 @@ export default async function Home() {
             <div>
               <h2 className="text-xl font-semibold">Recent traces</h2>
               <p className="text-sm text-slate-500">
-                Showing up to the latest eight trace artifacts. Phase 2 will add filters, charts, and drawers.
+                Latest eight artifacts across RFC and legacy traces. Filters, charts, and drawers arrive next.
               </p>
             </div>
             <p className="text-xs text-slate-500">
@@ -140,6 +131,28 @@ export default async function Home() {
             )}
           </div>
         </section>
+
+        <footer className="mt-4 flex flex-col gap-2 border-t border-slate-900/60 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} Agent Audit Log · Colosseum Agent Hackathon</p>
+          <div className="flex flex-wrap gap-4 text-slate-300">
+            <Link
+              href="https://github.com/M-DEV-1"
+              className="transition hover:text-white"
+              target="_blank"
+              rel="noreferrer"
+            >
+              github.com/M-DEV-1
+            </Link>
+            <Link
+              href="https://colosseum.com/projects/agent-audit-log"
+              className="transition hover:text-white"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Colosseum project page
+            </Link>
+          </div>
+        </footer>
       </main>
     </div>
   );
