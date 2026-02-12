@@ -83,7 +83,7 @@ export default async function Home() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm text-slate-400">Current Workstream</p>
-                <h2 className="text-2xl font-semibold">
+                <h2 className="text-2xl font-semibold break-words max-w-full">
                   {latestTrace?.label ?? latestTrace?.id ?? "No trace yet"}
                 </h2>
               </div>
@@ -238,13 +238,17 @@ export default async function Home() {
             ) : (
               <div className="divide-y divide-slate-800">
                 {activityLog.map((trace) => (
-                  <div key={trace.path} className="grid grid-cols-4 gap-1 px-4 py-3 text-sm text-slate-200">
-                    <div>
-                      <p className="text-xs font-semibold text-slate-300">{trace.label ?? trace.id}</p>
-                      <p className="text-xs text-slate-500">{formatTimestamp(trace.timestamp)}</p>
+                  <div
+                    key={trace.path}
+                    className="grid grid-cols-4 gap-2 px-4 py-3 text-sm text-slate-200"
+                    style={{ gridTemplateColumns: "2fr 1fr 1fr auto" }}
+                  >
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-slate-300 truncate">{trace.label ?? trace.id}</p>
+                      <p className="text-xs text-slate-500 truncate">{formatTimestamp(trace.timestamp)}</p>
                     </div>
-                    <span className="text-xs capitalize text-slate-400">{trace.source}</span>
-                    <span className="text-xs font-mono text-slate-400">{trace.commitSha ?? "—"}</span>
+                    <span className="text-xs capitalize text-slate-400 truncate">{trace.source}</span>
+                    <span className="text-xs font-mono text-slate-400 truncate">{trace.commitSha ?? "—"}</span>
                     <span className="text-xs">
                       {trace.solanaTx ? (
                         <Link
@@ -253,7 +257,7 @@ export default async function Home() {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {formatTimestamp(trace.timestamp)}
+                          View anchor
                         </Link>
                       ) : (
                         <span className="text-slate-500">Pending</span>
