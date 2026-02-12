@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "a9704f48-ec09-4f6e-8155-ef68d96764f9",
+  "timestamp": "2026-02-12T21:44:54.809322Z",
+  "vcs": {
+    "type": "git",
+    "revision": "74ca5dbe806d301c178f2031d9f0e1c8c0fd23f8"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "gpt-5.1-codex"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/gpt-5.1-codex"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 293
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add Phase 2 telemetry",
+    "parent_commit": "4917d0dd3aec015dd4b17f0b73a2043215bed77d",
+    "trace_hash": "7317a9f618bb5801fda868674bcc64f675b73e2e26a9345c405acca0d75bc4c8",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4MHEM4mgfM8zYRgfLxL4XcDSjgHkbuz48D6UU6nhbseTAvBrqHk46hMGj3LubgTPWk3HpjVfgZMd9DHkaRwxcAW6",
+      "explorer": "https://solscan.io/tx/4MHEM4mgfM8zYRgfLxL4XcDSjgHkbuz48D6UU6nhbseTAvBrqHk46hMGj3LubgTPWk3HpjVfgZMd9DHkaRwxcAW6?cluster=devnet",
+      "action_id": "d4e3bb1d-66f9-4c40-bcb2-a75a52f6b09e",
+      "status": "confirmed",
+      "sponsored": true
+    },
+    "solana_tx": "4MHEM4mgfM8zYRgfLxL4XcDSjgHkbuz48D6UU6nhbseTAvBrqHk46hMGj3LubgTPWk3HpjVfgZMd9DHkaRwxcAW6"
+  }
+}
