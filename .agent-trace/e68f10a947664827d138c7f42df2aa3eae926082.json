@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "9bba1f31-ee60-4aa0-afc5-172460edf3bd",
+  "timestamp": "2026-02-13T19:46:58.254970Z",
+  "vcs": {
+    "type": "git",
+    "revision": "e68f10a947664827d138c7f42df2aa3eae926082"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/deploy.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 252
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(deploy): add CLI deployment automation with build validation and smoke tests",
+    "parent_commit": "a0e43de9822692292e05d0d4fb68eeb193cdb6e6",
+    "phase": "vercel-runtime-hardening",
+    "trace_hash": "546dd3ef5eec0d367791f1d26850ee2914a1136536ec6a1f45adcc61b5476dbd",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "2ibUFJ2ZpHxtziKGxBedR4Yr9uRzJrXViUcqViJfpsc8qV5NQ1v7RX7rWXmKxBScmoqryj1FxaWvwHm43sWwbNDF",
+      "explorer": "https://solscan.io/tx/2ibUFJ2ZpHxtziKGxBedR4Yr9uRzJrXViUcqViJfpsc8qV5NQ1v7RX7rWXmKxBScmoqryj1FxaWvwHm43sWwbNDF?cluster=devnet",
+      "action_id": "fb9f920b-a3ed-4e16-bfec-af49e7b4c504",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
