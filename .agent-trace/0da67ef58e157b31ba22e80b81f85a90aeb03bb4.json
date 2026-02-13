@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "id": "748ecbd7-fb96-4e63-b0d9-6f6a2ac8c968",
+  "timestamp": "2026-02-13T18:53:26.135450Z",
+  "vcs": {
+    "type": "git",
+    "revision": "0da67ef58e157b31ba22e80b81f85a90aeb03bb4"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/lib/traces.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 241,
+              "end_line": 248
+            },
+            {
+              "start_line": 272,
+              "end_line": 289
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 4,
+              "end_line": 4
+            },
+            {
+              "start_line": 29,
+              "end_line": 30
+            },
+            {
+              "start_line": 154,
+              "end_line": 168
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add commit velocity metrics panel with 24h stats and peak hour tracking",
+    "parent_commit": "a78e37335a3c714baf3e1410bec6128251fa95e6",
+    "trace_hash": "b1c7bd4453652a5c0393454cdb6ba0bf5008d657338c8330018a58c858fbfc7c",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4Exb6pgUgFm2ZMmayRgGNALREp1iLm1kGgcjK2C3RuCRWZfMLBMcUoWTR6krz1xGwNUHi1SENwQLbSrNuuhsgacw",
+      "explorer": "https://solscan.io/tx/4Exb6pgUgFm2ZMmayRgGNALREp1iLm1kGgcjK2C3RuCRWZfMLBMcUoWTR6krz1xGwNUHi1SENwQLbSrNuuhsgacw?cluster=devnet",
+      "action_id": "74576acf-b44a-4542-a3b2-2ea95a83ac7e",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

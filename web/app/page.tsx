@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import Link from "next/link";
-import { loadTraceSummaries, summarizeTraces, buildCommitTimeline } from "@/lib/traces";
+import { loadTraceSummaries, summarizeTraces, buildCommitTimeline, calculateVelocity } from "@/lib/traces";
 
 const GITHUB_COMMIT_BASE = "https://github.com/M-DEV-1/agent-audit-log/commit";
 
@@ -26,6 +26,7 @@ export default async function Home() {
   const traces = await loadTraceSummaries();
   const analytics = summarizeTraces(traces);
   const timeline = buildCommitTimeline(traces);
+  const velocity = calculateVelocity(traces);
   const topTraces = traces.slice(0, 8);
   const year = new Date().getUTCFullYear();
   const anchorProgress = analytics.total ? Math.round((analytics.anchored / analytics.total) * 100) : 0;
@@ -148,6 +149,20 @@ export default async function Home() {
               </div>
             </div>
             <span>Now</span>
+          </div>
+          <div className="mt-6 grid grid-cols-3 gap-4">
+            <div className="text-center">
+              <p className="text-2xl font-semibold text-sky-400">{velocity.commitsLast24h}</p>
+              <p className="text-xs text-slate-500 mt-1">Last 24h</p>
+            </div>
+            <div className="text-center border-x border-slate-800">
+              <p className="text-2xl font-semibold text-emerald-400">{velocity.commitsPerHour}</p>
+              <p className="text-xs text-slate-500 mt-1">Per hour</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-semibold text-amber-400">{velocity.peakCount}</p>
+              <p className="text-xs text-slate-500 mt-1">Peak ({velocity.peakHour})</p>
+            </div>
           </div>
         </section>
 

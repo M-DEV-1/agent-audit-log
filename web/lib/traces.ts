@@ -236,6 +236,13 @@ export interface TimelineDataPoint {
   anchored: number;
 }
 
+export interface VelocityMetrics {
+  commitsLast24h: number;
+  commitsPerHour: number;
+  peakHour: string;
+  peakCount: number;
+}
+
 export function buildCommitTimeline(traces: TraceSummary[]): TimelineDataPoint[] {
   const now = new Date();
   const last24Hours: TimelineDataPoint[] = [];
@@ -263,4 +270,26 @@ export function buildCommitTimeline(traces: TraceSummary[]): TimelineDataPoint[]
   });
   
   return last24Hours;
+}
+
+export function calculateVelocity(traces: TraceSummary[]): VelocityMetrics {
+  const now = new Date();
+  const last24h = traces.filter(trace => {
+    if (!trace.timestamp) return false;
+    const traceTime = new Date(trace.timestamp);
+    return (now.getTime() - traceTime.getTime()) < 24 * 60 * 60 * 1000;
+  });
+  
+  const timeline = buildCommitTimeline(traces);
+  const peak = timeline.reduce((max, point) => 
+    point.count > max.count ? point : max, 
+    { hour: '00:00', count: 0, anchored: 0 }
+  );
+  
+  return {
+    commitsLast24h: last24h.length,
+    commitsPerHour: last24h.length > 0 ? +(last24h.length / 24).toFixed(2) : 0,
+    peakHour: peak.hour,
+    peakCount: peak.count
+  };
 }
