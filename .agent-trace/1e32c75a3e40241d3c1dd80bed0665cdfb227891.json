@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "id": "16196cc4-81d8-48ef-831a-e5347e83cb6b",
+  "timestamp": "2026-02-13T20:43:07.266367Z",
+  "vcs": {
+    "type": "git",
+    "revision": "1e32c75a3e40241d3c1dd80bed0665cdfb227891"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 116,
+              "end_line": 128
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/components/TraceDetail.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 128
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "fix(ui): correct GitHub commit links to /master, add Verify Proof button, compact expandable table",
+    "parent_commit": "98cd8da83c703aaac098d9618829ff1d80b92cf5",
+    "phase": "ui-fixes",
+    "trace_hash": "f4296d7a7ed470e1dc1e687b9b0123911a15fbfaa76f805e87fa89fd0b936c3e",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "5Vmzxv4NjZePvSNLXDD38TyAKTeoyXzN9pvRyEf8oo9VfmNfn26na7kVymDCc11RacvzREinmmEnz1zD37PKayMS",
+      "explorer": "https://solscan.io/tx/5Vmzxv4NjZePvSNLXDD38TyAKTeoyXzN9pvRyEf8oo9VfmNfn26na7kVymDCc11RacvzREinmmEnz1zD37PKayMS?cluster=devnet",
+      "action_id": "8503467b-4d07-4b33-8d6a-f5a4640281e1",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

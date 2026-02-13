@@ -124,7 +124,7 @@ export default async function Home() {
                 {latestTrace?.commitSha ? (
                   <div className="flex items-center gap-2">
                     <Link
-                      href={`${GITHUB_COMMIT_BASE}/${latestTrace.commitSha}`}
+                      href={`${GITHUB_COMMIT_BASE}/master`}
                       className="text-sm text-slate-200 font-mono break-all hover:text-emerald-200"
                       target="_blank"
                       rel="noreferrer"
