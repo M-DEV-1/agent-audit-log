@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "9f7bc03d-d788-4aad-be92-0a2a3582ee4a",
+  "timestamp": "2026-02-13T19:37:41.197157Z",
+  "vcs": {
+    "type": "git",
+    "revision": "d0145b2e4632c48972ed1c6904c0391c47ad96c6"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/smoke-test.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 90
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(deploy): add smoke test suite for post-deployment validation with 10 comprehensive checks",
+    "parent_commit": "707655bfb376d9df63dd0ba833cb2b96e4031dd7",
+    "phase": "vercel-runtime-hardening",
+    "trace_hash": "305c0f0ec76cd52483417fcc436228fea567c4475eb124e74ff1961a85d102c7",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3pNzMaUFmzykp8VYCFaNUmJ5fpvRdTNwFsGHQWEyjAAUiTwgFNcXGVaMJTcUfdYCX7YVFGHhL9KoDErv2y7EbUyo",
+      "explorer": "https://solscan.io/tx/3pNzMaUFmzykp8VYCFaNUmJ5fpvRdTNwFsGHQWEyjAAUiTwgFNcXGVaMJTcUfdYCX7YVFGHhL9KoDErv2y7EbUyo?cluster=devnet",
+      "action_id": "26e366a0-dce7-4929-b3ad-372710172137",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
