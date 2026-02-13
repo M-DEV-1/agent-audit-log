@@ -95,7 +95,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+        <section className="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/40 to-slate-900/20 p-6">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-xl font-semibold">Commit Activity (Last 24h)</h2>
@@ -263,7 +263,7 @@ export default async function Home() {
                 {topTraces.map((trace) => (
                   <div
                     key={`${trace.source}-${trace.id}`}
-                    className="grid grid-cols-6 px-4 py-3 text-sm text-slate-200"
+                    className="grid grid-cols-6 px-4 py-3 text-sm text-slate-200 transition-colors hover:bg-slate-800/50"
                   >
                     <span className="truncate font-mono text-xs text-slate-300">
                       {trace.id}
@@ -280,7 +280,7 @@ export default async function Home() {
                       {trace.solanaTx ? (
                         <Link
                           href={`https://solscan.io/tx/${trace.solanaTx}?cluster=devnet`}
-                          className="text-emerald-300 hover:text-emerald-200"
+                          className="text-emerald-300 hover:text-emerald-200 transition-colors"
                           target="_blank"
                           rel="noreferrer"
                           aria-label={`View Solana transaction ${trace.solanaTx.slice(0, 8)} on Solscan`}
@@ -323,7 +323,7 @@ export default async function Home() {
                 {activityLog.map((trace) => (
                   <div
                     key={trace.path}
-                    className="grid grid-cols-4 gap-2 px-4 py-3 text-sm text-slate-200"
+                    className="grid grid-cols-4 gap-2 px-4 py-3 text-sm text-slate-200 transition-colors hover:bg-slate-800/50 cursor-pointer"
                     style={{ gridTemplateColumns: "2fr 1fr 1fr auto" }}
                   >
                     <div className="min-w-0">
@@ -336,7 +336,7 @@ export default async function Home() {
                       {trace.solanaTx ? (
                         <Link
                           href={`https://solscan.io/tx/${trace.solanaTx}?cluster=devnet`}
-                          className="text-emerald-300 hover:text-emerald-200"
+                          className="text-emerald-300 hover:text-emerald-200 transition-colors"
                           target="_blank"
                           rel="noreferrer"
                           aria-label={`View Solana anchor for trace ${trace.id.slice(0, 8)} on Solscan devnet`}

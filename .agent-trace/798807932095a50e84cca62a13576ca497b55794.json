@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "id": "278982df-f518-4f0a-9ab2-26cc637ed398",
+  "timestamp": "2026-02-13T18:47:27.882667Z",
+  "vcs": {
+    "type": "git",
+    "revision": "798807932095a50e84cca62a13576ca497b55794"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 102,
+              "end_line": 102
+            },
+            {
+              "start_line": 271,
+              "end_line": 271
+            },
+            {
+              "start_line": 333,
+              "end_line": 333
+            },
+            {
+              "start_line": 346,
+              "end_line": 346
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add smooth hover transitions, gradient backgrounds, and improved table interactivity",
+    "parent_commit": "690479b9a7159cda96e5cc226a8dece0db9e366b",
+    "trace_hash": "e9dc05e658ab213bee7bf8153e82da7f7d15cee683d6a2a96a1151134a431bd7",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3D8vNqLXkRUqNdEfJna2Dq7zCaRHo8tPaNr8tTqM4oHf3d9nNGrQtWAeeXjZ6LLBMp1Q3dhgh4xDEzUY52NiDRXD",
+      "explorer": "https://solscan.io/tx/3D8vNqLXkRUqNdEfJna2Dq7zCaRHo8tPaNr8tTqM4oHf3d9nNGrQtWAeeXjZ6LLBMp1Q3dhgh4xDEzUY52NiDRXD?cluster=devnet",
+      "action_id": "20302c7e-687b-4d1b-bab8-a1813a86754d",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
