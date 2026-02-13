@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "id": "70c51bbf-3bcb-4adc-82c8-a62b30061153",
+  "timestamp": "2026-02-13T18:23:05.088782Z",
+  "vcs": {
+    "type": "git",
+    "revision": "d3a24c09c7f3e8a1b2c5d4f6e9a7b8c3d1e2f4a5"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 221,
+              "end_line": 221
+            },
+            {
+              "start_line": 277,
+              "end_line": 277
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add ARIA labels to Solscan links for enhanced screen reader accessibility",
+    "parent_commit": "2e460c3",
+    "trace_hash": "1abf6daf5fcadc6bda704833106cd2d603f1ab5aecc7c703b413c4fe34c13912",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4789jP2wcZFnxDD2iHPhZDeukKzGYww5vrvcX3DqrCmLkZCifM1fjGtiEYCiT5t1H3xjrKm5PgsS8numxPHNzktq",
+      "explorer": "https://solscan.io/tx/4789jP2wcZFnxDD2iHPhZDeukKzGYww5vrvcX3DqrCmLkZCifM1fjGtiEYCiT5t1H3xjrKm5PgsS8numxPHNzktq?cluster=devnet",
+      "action_id": "d95d6059-9c79-43db-8b50-24ee561766cb",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

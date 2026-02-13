@@ -218,6 +218,7 @@ export default async function Home() {
                           className="text-emerald-300 hover:text-emerald-200"
                           target="_blank"
                           rel="noreferrer"
+                          aria-label={`View Solana transaction ${trace.solanaTx.slice(0, 8)} on Solscan`}
                         >
                           Anchored
                         </Link>
@@ -273,6 +274,7 @@ export default async function Home() {
                           className="text-emerald-300 hover:text-emerald-200"
                           target="_blank"
                           rel="noreferrer"
+                          aria-label={`View Solana anchor for trace ${trace.id.slice(0, 8)} on Solscan devnet`}
                         >
                           View anchor
                         </Link>
