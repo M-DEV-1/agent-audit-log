@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "39391daf-40ec-44f8-8bfd-9daf86395e48",
+  "timestamp": "2026-02-13T19:53:27.179465Z",
+  "vcs": {
+    "type": "git",
+    "revision": "16c9314d8daec4f5bd9ff4f7ec515a5bd3ef1a6b"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/perf-diagnostics.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 268
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(deploy): add performance diagnostic tools for build timing and bundle analysis",
+    "parent_commit": "cadce088a0dd90ab82025055edf06b7d2151763d",
+    "phase": "vercel-runtime-hardening",
+    "trace_hash": "d07e50a7ea6a95a0926f0387937ddea59d438bdb872304aa1167693c0aecc849",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "2HctkrbgDX8GruBXWKSeNpt6gQckE6KUvwaAz242YaWXF9p1C9Vuit24cVXhX6YspGwnzR7iFPzdsNEh1uy93Vhw",
+      "explorer": "https://solscan.io/tx/2HctkrbgDX8GruBXWKSeNpt6gQckE6KUvwaAz242YaWXF9p1C9Vuit24cVXhX6YspGwnzR7iFPzdsNEh1uy93Vhw?cluster=devnet",
+      "action_id": "bdeb2bc7-9f41-4c46-9521-d7d8e06946a2",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
