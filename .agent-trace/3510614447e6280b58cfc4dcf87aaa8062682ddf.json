@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "c41672eb-4f85-4f33-96b8-3a5b85f05f24",
+  "timestamp": "2026-02-13T20:23:31.220306Z",
+  "vcs": {
+    "type": "git",
+    "revision": "3510614447e6280b58cfc4dcf87aaa8062682ddf"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "docs/commit-roadmap.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 552
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "docs(roadmap): update to 500-commit mission with 11-phase verification platform plan",
+    "parent_commit": "82d02fbf0b8c622d2b03026d1e52fec048a0192e",
+    "phase": "enhanced-verification",
+    "trace_hash": "32009defb3033d553e85666b5ecac4a541c28315fbbcffc483f7cc9df434b5e9",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "5VHuFLTcK7WXeACEK1Zh97dx6TSKe2HrnDC1tWt9ePJuk8A4qiuCYsDR3mrFojH4u38uY2Pg3GYNADjAD2qcPL3",
+      "explorer": "https://solscan.io/tx/5VHuFLTcK7WXeACEK1Zh97dx6TSKe2HrnDC1tWt9ePJuk8A4qiuCYsDR3mrFojH4u38uY2Pg3GYNADjAD2qcPL3?cluster=devnet",
+      "action_id": "e9bba197-ec7b-49c0-893d-5d6fa76798d1",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
