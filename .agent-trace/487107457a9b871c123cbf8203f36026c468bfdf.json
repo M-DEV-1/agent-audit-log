@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "1aa90ded-463b-4abc-ac86-7fcfb1592808",
+  "timestamp": "2026-02-13T20:47:11.189269Z",
+  "vcs": {
+    "type": "git",
+    "revision": "487107457a9b871c123cbf8203f36026c468bfdf"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/generate-report.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 207
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add HTML/Markdown report generator with stats and tables",
+    "parent_commit": "c0bb8afaee922ddd6959cb1de2b790b1ee0d5d26",
+    "phase": "enhanced-verification",
+    "trace_hash": "31656490192c52ce31f88c7ae2d8abc96649fff36727b8d846e21c3409f1246d",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3pTLa7vRNm2X42HtUv9ZAmFPo1dooaKPi7uuoA9k3gcuQYrtdZtgN6cSzBE1axUynfikJcNQU33JQom8PzBmJRHT",
+      "explorer": "https://solscan.io/tx/3pTLa7vRNm2X42HtUv9ZAmFPo1dooaKPi7uuoA9k3gcuQYrtdZtgN6cSzBE1axUynfikJcNQU33JQom8PzBmJRHT?cluster=devnet",
+      "action_id": "d42bae3f-42d5-458a-8ab0-36463ee56faa",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
