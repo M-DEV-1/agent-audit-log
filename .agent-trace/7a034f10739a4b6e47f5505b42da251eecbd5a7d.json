@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "eb0f0e40-1006-426f-af1d-d5515c24ebef",
+  "timestamp": "2026-02-13T21:07:21.276954Z",
+  "vcs": {
+    "type": "git",
+    "revision": "7a034f10739a4b6e47f5505b42da251eecbd5a7d"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "docs/VERIFICATION_GUIDE.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 438
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "docs(verify): add comprehensive step-by-step verification guide for judges",
+    "parent_commit": "3f123c627667c3907280c206dd32abeeae0916d7",
+    "phase": "enhanced-verification",
+    "trace_hash": "b255cee44fb06319ecaaa4b44ed0cca8da2535daf82d4d241a6af192deb6e1c9",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "krM5U4hF8MTQTMDyTyjwLSvnCSkLgL5FZEYXYR5VZ7ggwM8566QHBdo1Jjr6gf1Yv6d72fTwpPuDZTzjNYvz3Na",
+      "explorer": "https://solscan.io/tx/krM5U4hF8MTQTMDyTyjwLSvnCSkLgL5FZEYXYR5VZ7ggwM8566QHBdo1Jjr6gf1Yv6d72fTwpPuDZTzjNYvz3Na?cluster=devnet",
+      "action_id": "f823699e-fe81-4f29-a73b-c1359cccfe15",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
