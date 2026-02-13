@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "e2e2b75e-a781-4376-bb91-542a49e29c23",
+  "timestamp": "2026-02-13T20:29:40.798717Z",
+  "vcs": {
+    "type": "git",
+    "revision": "feecf8743672af09f4bd6c05e5178baf4b96b3de"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": ".github/workflows/verify-traces.yml",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 69
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "ci(verify): add GitHub Actions workflow for automated trace verification",
+    "parent_commit": "2c6d33e669640574bfb179f84fed116b55402b6e",
+    "phase": "enhanced-verification",
+    "trace_hash": "42456152a3ffa2290fe9087eb751235ba44336c507b714aa0e9f52f6541bbb05",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3bRA4hnpkruLM5Lhs5eT3U8NLsC4gcAZgkuiZoZgvFd2MQhVMCv5iSHDp7UkeeoW5nGDjKCx22u5K2NqzvBW6dZV",
+      "explorer": "https://solscan.io/tx/3bRA4hnpkruLM5Lhs5eT3U8NLsC4gcAZgkuiZoZgvFd2MQhVMCv5iSHDp7UkeeoW5nGDjKCx22u5K2NqzvBW6dZV?cluster=devnet",
+      "action_id": "caecc373-01fb-4471-aa7c-29b7f980187e",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
