@@ -50,11 +50,18 @@ jobs:
       - name: Check anchor coverage
         run: |
           TOTAL=$(find .agent-trace -name "*.json" | wc -l)
-          ANCHORED=$(jq -r 'select(.metadata.solana_anchor.tx_hash != null)' .agent-trace/*.json | grep -c "tx_hash" || echo 0)
+          if [[ "$TOTAL" -eq 0 ]]; then
+            echo "📊 Anchor Coverage: 0% (0/0)"
+            echo "⚠️ No traces found"
+            exit 1
+          fi
+
+          # Count anchored traces using jq safely
+          ANCHORED=$(jq -s 'map(select(.metadata.solana_anchor and .metadata.solana_anchor.tx_hash != null)) | length' .agent-trace/*.json || echo 0)
           COVERAGE=$(echo "scale=1; ($ANCHORED / $TOTAL) * 100" | bc)
-          
+
           echo "📊 Anchor Coverage: $COVERAGE% ($ANCHORED/$TOTAL)"
-          
+
           if (( $(echo "$COVERAGE < 95" | bc -l) )); then
             echo "⚠️ Anchor coverage below 95%"
             exit 1

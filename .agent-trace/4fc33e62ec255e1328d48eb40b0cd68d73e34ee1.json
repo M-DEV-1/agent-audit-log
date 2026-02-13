@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "1f929ee8-b38b-4eb5-b098-59137da98855",
+  "timestamp": "2026-02-13T22:18:37.618869Z",
+  "vcs": {
+    "type": "git",
+    "revision": "4fc33e62ec255e1328d48eb40b0cd68d73e34ee1"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": ".github/workflows/verify-traces.yml",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 999
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "ci(verify): fix anchor coverage calculation and handle zero-trace case in workflow",
+    "parent_commit": "e2ad375ffd67b1b5346cbb5688ad71f24017fa58",
+    "phase": "ci",
+    "trace_hash": "52dc522d8cc00b20094050f1beb74d28813eae8ccdd4097ddf733ad38ed6d031",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4shL4iBzuTnN6T7WPAf5dAAEm4X6LsFcj8EBvqk4YsvPjFizJGpc15nPFQsbBBPHpY5bdrfkLvcLmgeMJEuXGW37",
+      "explorer": "https://solscan.io/tx/4shL4iBzuTnN6T7WPAf5dAAEm4X6LsFcj8EBvqk4YsvPjFizJGpc15nPFQsbBBPHpY5bdrfkLvcLmgeMJEuXGW37?cluster=devnet",
+      "action_id": "1af58057-b2dd-48be-b41d-fdd83291a93b",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
