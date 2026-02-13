@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "590a4fae-558b-4816-b07d-5227af3f6ab9",
+  "timestamp": "2026-02-13T20:36:56.065204Z",
+  "vcs": {
+    "type": "git",
+    "revision": "386222625b46ac1cddca106ea368a69dc3c947c3"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/download-traces.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 194
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add bulk trace downloader with CSV export and manifest generation",
+    "parent_commit": "62ee8da21330eb3566a8f67c7edde750435cccf7",
+    "phase": "enhanced-verification",
+    "trace_hash": "5acdefc74abd6fcbac7059880f3cbbfdce51fcc322952356860642427786a9ff",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "dqYR5fV44uriPzihpCQtqV2knt6bpwBF2iG2dGM5RdfNUTBPM8TMgRc9EMBBRHsmufUD9bNUC6TniWgDdiFnpJ4",
+      "explorer": "https://solscan.io/tx/dqYR5fV44uriPzihpCQtqV2knt6bpwBF2iG2dGM5RdfNUTBPM8TMgRc9EMBBRHsmufUD9bNUC6TniWgDdiFnpJ4?cluster=devnet",
+      "action_id": "fe8c4acf-412b-4fd2-b837-78017961fffd",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
