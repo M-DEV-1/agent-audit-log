@@ -196,13 +196,13 @@ export default async function Home() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40">
-            <div className="grid grid-cols-6 border-b border-slate-800 bg-slate-900/70 px-4 py-2 text-xs uppercase tracking-wide text-slate-500">
-              <span>ID</span>
+            <div className="grid grid-cols-6 border-b border-slate-800 bg-slate-900/80 px-6 py-3 text-xs uppercase tracking-wider text-slate-400 font-semibold">
+              <span>Trace ID</span>
               <span>Timestamp</span>
               <span>Commit</span>
               <span>Source</span>
               <span>Files</span>
-              <span>Solana</span>
+              <span className="text-right">Anchor</span>
             </div>
             {recentTraces.length === 0 ? (
               <p className="px-4 py-6 text-sm text-slate-500">No trace files detected yet.</p>

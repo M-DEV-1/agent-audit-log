@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "id": "58a9b131-66fb-4ec9-ae13-d3cd2678806d",
+  "timestamp": "2026-02-13T20:50:44.007588Z",
+  "vcs": {
+    "type": "git",
+    "revision": "9fa05c6b3c6567d2f0f94d0d73328eb1a932a95c"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 197,
+              "end_line": 203
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/components/TraceDetail.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 29,
+              "end_line": 54
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "style(ui): improve traces table with better colors, spacing, and gradient backgrounds",
+    "parent_commit": "5c9d512f2d4c52f10feebac7f3ade6ea637c1f2e",
+    "phase": "ui-polish",
+    "trace_hash": "7185326183dd51966c6175373d5f5dad817666884a2205b59a32362b2f514f0f",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3Wv2hs4kPzqmLb5rSrfxiYuhuiqxJUD751niZ4wYUsAZvMQgJYhXdWSEgxkBWeXKvDmaCtf2jpS1j66W1wAwRCnD",
+      "explorer": "https://solscan.io/tx/3Wv2hs4kPzqmLb5rSrfxiYuhuiqxJUD751niZ4wYUsAZvMQgJYhXdWSEgxkBWeXKvDmaCtf2jpS1j66W1wAwRCnD?cluster=devnet",
+      "action_id": "13252901-0d66-46af-8622-979626b434e9",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

@@ -34,17 +34,23 @@ export function TraceDetail({ trace }: TraceDetailProps) {
     <>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="grid grid-cols-6 gap-2 px-4 py-3 text-left text-sm hover:bg-slate-800/50 transition-colors w-full border-t border-slate-800"
+        className="grid grid-cols-6 gap-4 px-6 py-4 text-left hover:bg-slate-800/40 transition-all w-full border-b border-slate-800/50"
       >
-        <span className="text-xs font-mono text-slate-300 truncate">{trace.id.slice(0, 8)}...</span>
-        <span className="text-xs text-slate-400">{formatTimestamp(trace.timestamp)}</span>
-        <span className="text-xs font-mono text-slate-400 truncate">{trace.commitSha?.slice(0, 7) ?? "—"}</span>
-        <span className="text-xs text-slate-400 capitalize">{trace.source}</span>
-        <span className="text-xs text-slate-400">{trace.files ?? "—"}</span>
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-slate-400">{trace.solanaTx ? "✓" : "—"}</span>
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="text-xs font-mono text-emerald-400 truncate">{trace.id.slice(0, 8)}...</span>
+        </div>
+        <span className="text-xs text-slate-300">{formatTimestamp(trace.timestamp)}</span>
+        <span className="text-xs font-mono text-sky-400 truncate">{trace.commitSha?.slice(0, 7) ?? "—"}</span>
+        <span className="text-xs text-slate-300 capitalize">{trace.source}</span>
+        <span className="text-xs text-slate-300 text-center">{trace.files ?? "—"}</span>
+        <div className="flex items-center justify-end gap-2">
+          {trace.solanaTx ? (
+            <span className="text-xs text-emerald-400 font-semibold">✓</span>
+          ) : (
+            <span className="text-xs text-slate-500">—</span>
+          )}
           <svg
-            className={`w-4 h-4 text-slate-500 transition-transform ${expanded ? 'rotate-180' : ''}`}
+            className={`w-4 h-4 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -55,8 +61,8 @@ export function TraceDetail({ trace }: TraceDetailProps) {
       </button>
       
       {expanded && (
-        <div className="px-6 py-4 bg-slate-800/30 border-t border-slate-700/50">
-          <div className="grid grid-cols-2 gap-4 text-xs">
+        <div className="px-6 py-5 bg-gradient-to-br from-slate-800/40 to-slate-900/40 border-b border-slate-700/50">
+          <div className="grid grid-cols-2 gap-6 text-xs">
             <div>
               <p className="text-slate-500 uppercase tracking-wider mb-1">Trace UUID</p>
               <div className="flex items-center gap-2">
