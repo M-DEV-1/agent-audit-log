@@ -1,0 +1,70 @@
+{
+  "version": "1.0",
+  "id": "8d795179-133e-4037-99c5-e02fef51bce8",
+  "timestamp": "2026-02-13T18:30:05.523522Z",
+  "vcs": {
+    "type": "git",
+    "revision": "903e92e4a2ef584eb94328c632560d6e3e0b832a"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 4,
+              "end_line": 4
+            },
+            {
+              "start_line": 29,
+              "end_line": 29
+            },
+            {
+              "start_line": 92,
+              "end_line": 141
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/lib/traces.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 234,
+              "end_line": 268
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add Grafana-style 24h commit activity timeline with anchored/total visualization",
+    "parent_commit": "37343b88355cbd97dbe860f7bbb7b70d8736f974",
+    "trace_hash": "558e24f152ae8619ac81da2d98b7df1b229ef6c8b440fc8784461325d078bdd8",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "Eg5R1sUp72zgZEzcx9bBeqPWucR9NETakCJ5pGXXtbXxBPdo1cXHWNaRV5ygFnw3rAP8cPF7STxUAzW1n1ykT9X",
+      "explorer": "https://solscan.io/tx/Eg5R1sUp72zgZEzcx9bBeqPWucR9NETakCJ5pGXXtbXxBPdo1cXHWNaRV5ygFnw3rAP8cPF7STxUAzW1n1ykT9X?cluster=devnet",
+      "action_id": "39fd4d34-a3a2-4e5b-bc25-902df52192df",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

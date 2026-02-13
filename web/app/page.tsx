@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import Link from "next/link";
-import { loadTraceSummaries, summarizeTraces } from "@/lib/traces";
+import { loadTraceSummaries, summarizeTraces, buildCommitTimeline } from "@/lib/traces";
 
 const GITHUB_COMMIT_BASE = "https://github.com/M-DEV-1/agent-audit-log/commit";
 
@@ -25,6 +25,7 @@ function formatTimestamp(timestamp?: string) {
 export default async function Home() {
   const traces = await loadTraceSummaries();
   const analytics = summarizeTraces(traces);
+  const timeline = buildCommitTimeline(traces);
   const topTraces = traces.slice(0, 8);
   const year = new Date().getUTCFullYear();
   const anchorProgress = analytics.total ? Math.round((analytics.anchored / analytics.total) * 100) : 0;
@@ -83,6 +84,62 @@ export default async function Home() {
                 ? `${formatTimestamp(analytics.latestTimestamp)} · ${analytics.latestCommit ?? "–"}`
                 : "Awaiting next trace"}
             </p>
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-xl font-semibold">Commit Activity (Last 24h)</h2>
+              <p className="text-xs text-slate-500 mt-1">Real-time trace generation cadence</p>
+            </div>
+            <div className="text-right">
+              <p className="text-2xl font-semibold">{timeline.reduce((sum, d) => sum + d.count, 0)}</p>
+              <p className="text-xs text-slate-500">commits</p>
+            </div>
+          </div>
+          <div className="relative h-32 flex items-end gap-1">
+            {timeline.map((datapoint, i) => {
+              const maxCount = Math.max(...timeline.map(d => d.count), 1);
+              const height = (datapoint.count / maxCount) * 100;
+              const anchoredHeight = (datapoint.anchored / Math.max(datapoint.count, 1)) * height;
+              
+              return (
+                <div key={i} className="flex-1 flex flex-col justify-end items-center group relative">
+                  <div 
+                    className="w-full bg-slate-700 rounded-t transition-all hover:bg-slate-600"
+                    style={{ height: `${height}%`, minHeight: datapoint.count > 0 ? '4px' : '2px' }}
+                  >
+                    {datapoint.anchored > 0 && (
+                      <div 
+                        className="w-full bg-emerald-400 rounded-t"
+                        style={{ height: `${anchoredHeight}%` }}
+                      />
+                    )}
+                  </div>
+                  <div className="absolute -bottom-6 text-[9px] text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    {datapoint.hour}
+                  </div>
+                  <div className="absolute -top-8 hidden group-hover:block bg-slate-800 text-xs px-2 py-1 rounded border border-slate-700 whitespace-nowrap z-10">
+                    {datapoint.hour}: {datapoint.count} ({datapoint.anchored} anchored)
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex items-center justify-between mt-8 text-xs text-slate-500">
+            <span>24h ago</span>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-slate-700 rounded" />
+                <span>Total</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-emerald-400 rounded" />
+                <span>Anchored</span>
+              </div>
+            </div>
+            <span>Now</span>
           </div>
         </section>
 

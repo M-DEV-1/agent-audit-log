@@ -229,3 +229,38 @@ export function summarizeTraces(traces: TraceSummary[]): TraceAnalytics {
     latestCommit: latest?.commitSha,
   };
 }
+
+export interface TimelineDataPoint {
+  hour: string;
+  count: number;
+  anchored: number;
+}
+
+export function buildCommitTimeline(traces: TraceSummary[]): TimelineDataPoint[] {
+  const now = new Date();
+  const last24Hours: TimelineDataPoint[] = [];
+  
+  // Create 24 hourly buckets
+  for (let i = 23; i >= 0; i--) {
+    const hourDate = new Date(now.getTime() - i * 60 * 60 * 1000);
+    const hourKey = `${hourDate.getHours().toString().padStart(2, '0')}:00`;
+    last24Hours.push({ hour: hourKey, count: 0, anchored: 0 });
+  }
+  
+  // Fill buckets with trace data
+  traces.forEach(trace => {
+    if (!trace.timestamp) return;
+    const traceTime = new Date(trace.timestamp);
+    const hoursDiff = Math.floor((now.getTime() - traceTime.getTime()) / (60 * 60 * 1000));
+    
+    if (hoursDiff >= 0 && hoursDiff < 24) {
+      const bucketIndex = 23 - hoursDiff;
+      last24Hours[bucketIndex].count++;
+      if (trace.solanaTx) {
+        last24Hours[bucketIndex].anchored++;
+      }
+    }
+  });
+  
+  return last24Hours;
+}
