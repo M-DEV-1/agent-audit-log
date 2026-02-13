@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "id": "dc300aea-6caa-4c19-a3bf-64a059db9ff0",
+  "timestamp": "2026-02-13T18:37:20.734801Z",
+  "vcs": {
+    "type": "git",
+    "revision": "9b818c8b20a5193df2de7d33c5258430e23f4fbe"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 64,
+              "end_line": 76
+            },
+            {
+              "start_line": 77,
+              "end_line": 83
+            },
+            {
+              "start_line": 84,
+              "end_line": 99
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add hover states, color accents, and pulsing live indicator to hero metrics",
+    "parent_commit": "40ef0e0ec8f270bd6f8e1fa5aa6a1c79dc3abf15",
+    "trace_hash": "c3826cdaeba740a2c3f1f8b6723886a691176428a410718acf0df61b67806cab",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "28wh8TYtenZZj8WYDnfrLRc2dvn5T9aA9bRFV4oshXTBa48TWWsYs7pMRUwKbq5yANihfHn66cHyPt86UBzU5weP",
+      "explorer": "https://solscan.io/tx/28wh8TYtenZZj8WYDnfrLRc2dvn5T9aA9bRFV4oshXTBa48TWWsYs7pMRUwKbq5yANihfHn66cHyPt86UBzU5weP?cluster=devnet",
+      "action_id": "14bea828-4ebb-428e-8abb-ac9c4620460e",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

@@ -60,24 +60,32 @@ export default async function Home() {
         </header>
 
         <section className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-slate-700 hover:bg-slate-900/60">
             <p className="text-sm text-slate-400">Total Traces</p>
             <p className="mt-2 text-4xl font-semibold">{analytics.total}</p>
             <p className="mt-1 text-xs text-slate-500">
               {analytics.bySource.agent} RFC · {analytics.bySource.legacy} legacy
             </p>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-emerald-700 hover:bg-slate-900/60">
             <p className="text-sm text-slate-400">Solana Anchored</p>
-            <p className="mt-2 text-4xl font-semibold">{analytics.anchored}</p>
+            <p className="mt-2 text-4xl font-semibold text-emerald-400">{analytics.anchored}</p>
             <p className="mt-1 text-xs text-slate-500">
               {analytics.unanchored} pending anchors
             </p>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-sky-700 hover:bg-slate-900/60">
             <p className="text-sm text-slate-400">Latest Activity</p>
             <p className="mt-2 text-4xl font-semibold">
-              {analytics.latestTimestamp ? "Live" : "Idle"}
+              {analytics.latestTimestamp ? (
+                <span className="flex items-center gap-2">
+                  <span className="text-sky-400">Live</span>
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                  </span>
+                </span>
+              ) : "Idle"}
             </p>
             <p className="mt-1 text-xs text-slate-500">
               {analytics.latestTimestamp
