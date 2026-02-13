@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "94cb4cc2-8945-4af0-a254-4ce9049aeefa",
+  "timestamp": "2026-02-13T19:23:23.333717Z",
+  "vcs": {
+    "type": "git",
+    "revision": "e30f55fa434474de0ecdce0dddddafbd2fcaf2ce"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/health-check.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 94
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(deploy): add deployment health check script with build and trace validation",
+    "parent_commit": "37e0c7ce6001b5772ad67617e4c70baab47d50bd",
+    "phase": "vercel-runtime-hardening",
+    "trace_hash": "b2421e17a0d3d9a10b1e27441103f2a85dc60ed02bca7a3f9b8d409af39ec442",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3ar39UekSaSCEudU7KgrWEMoUaX4kTzMvV53KizUMtNapq9azR6AupMYwWWwTFciKjzZwYkuYCWtcU433JoDjSFC",
+      "explorer": "https://solscan.io/tx/3ar39UekSaSCEudU7KgrWEMoUaX4kTzMvV53KizUMtNapq9azR6AupMYwWWwTFciKjzZwYkuYCWtcU433JoDjSFC?cluster=devnet",
+      "action_id": "e52de14b-f0f7-4938-ad5d-f7fb882edf17",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
