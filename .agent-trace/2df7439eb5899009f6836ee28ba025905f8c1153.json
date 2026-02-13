@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "dabfc312-5528-4702-9e2a-bf3530a21264",
+  "timestamp": "2026-02-13T20:07:54.386920Z",
+  "vcs": {
+    "type": "git",
+    "revision": "2df7439eb5899009f6836ee28ba025905f8c1153"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/build-optimize.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 359
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(deploy): add build optimization utilities with bundle and dependency analysis",
+    "parent_commit": "b62361c5270f7f3fad546e2b8af6df184ef45004",
+    "phase": "vercel-runtime-hardening",
+    "trace_hash": "8d4502cb43a8fc238f01eea21625f6d2c7d492db0c579a9aadc967c665efd2cc",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "41VA2W7JYYWE2EjTi8xPz9aayNCDQhPx5SpQBPqU3t6uHdt6jyRS6HCaXbUKG5jLgKTZBph34fkzSzi8AwSxAfFB",
+      "explorer": "https://solscan.io/tx/41VA2W7JYYWE2EjTi8xPz9aayNCDQhPx5SpQBPqU3t6uHdt6jyRS6HCaXbUKG5jLgKTZBph34fkzSzi8AwSxAfFB?cluster=devnet",
+      "action_id": "d58d5776-a9f6-4293-94a5-93e6ec2295ed",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
