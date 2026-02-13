@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "f8223085-fbfb-4f3f-a789-8422fdefe9ae",
+  "timestamp": "2026-02-13T20:57:07.959822Z",
+  "vcs": {
+    "type": "git",
+    "revision": "3a60d2afbda95398526be4355953aadddac21d18"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/check-anchors.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 177
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add anchor health checker with balance monitoring and coverage stats",
+    "parent_commit": "ae241e16729fa66b7cad599df8a659a42c8027dd",
+    "phase": "enhanced-verification",
+    "trace_hash": "e9abad8e9590489699f7a70cabe997176281b50691627673ca8bac9eafa82799",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4YBk6vtsgsBhhsrr8jqQjPyAJNrJFmcZaBG5XRNvvqtD8fYaHJr9X4t6otQ9trG27RRoVjBwyy35bXJDUihcwiq7",
+      "explorer": "https://solscan.io/tx/4YBk6vtsgsBhhsrr8jqQjPyAJNrJFmcZaBG5XRNvvqtD8fYaHJr9X4t6otQ9trG27RRoVjBwyy35bXJDUihcwiq7?cluster=devnet",
+      "action_id": "973e9c1b-ca42-403c-a3ec-146298c26a97",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
