@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "aa126bdf-75de-40b1-98ab-494ebfec86d1",
+  "timestamp": "2026-02-13T20:27:18.346008Z",
+  "vcs": {
+    "type": "git",
+    "revision": "fd958357817335354ae667fbbe6b69543b4c7608"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/verify-batch.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 151
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add batch verification tool for commit ranges with JSON reports",
+    "parent_commit": "71664cd297e92236d8f42b7d6b5a90f8c1cbb49b",
+    "phase": "enhanced-verification",
+    "trace_hash": "a13eec58055f6c72ebf543851fe69dd40d1cdcd3cd628e20f65cc8b749cbe614",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3mGhNXxoFV72JrK3nBrcGpRv8AQL1RUaq8pVEDEomaYKYpwS4fmya8tKesfVybDJ1HRvpKg31epGrJ3Vj6TKaUq",
+      "explorer": "https://solscan.io/tx/3mGhNXxoFV72JrK3nBrcGpRv8AQL1RUaq8pVEDEomaYKYpwS4fmya8tKesfVybDJ1HRvpKg31epGrJ3Vj6TKaUq?cluster=devnet",
+      "action_id": "935c8f19-196d-404a-b659-22cb5d5af0b9",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
