@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "id": "50fdbd0b-6b6f-4920-adbc-41ed4885a107",
+  "timestamp": "2026-02-13T19:17:40.533126Z",
+  "vcs": {
+    "type": "git",
+    "revision": "eed6c92a4280a8e636c6a38e8798220e0df5ec3f"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/components/TraceDetail.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 6,
+              "end_line": 6
+            },
+            {
+              "start_line": 276,
+              "end_line": 280
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add expandable trace detail drawers with full metadata and copy buttons - MILESTONE COMMIT #50",
+    "parent_commit": "e58f82855cfe6080b588dad7c28affcd7cdcfc02",
+    "milestone": "50-commit goal achieved",
+    "trace_hash": "998e2a92fc80754146f7b5ee4a9b7dbb1c0f765583eb61ee9503725c3bcdb885",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "Hp1n6UW5PDBYRs428VBmrkUaa8obPtQD2MjQoPuir8d2X9kjaqbDdinQ6goCiN1fCN6Ky29aZvrUJavtvuWeLCA",
+      "explorer": "https://solscan.io/tx/Hp1n6UW5PDBYRs428VBmrkUaa8obPtQD2MjQoPuir8d2X9kjaqbDdinQ6goCiN1fCN6Ky29aZvrUJavtvuWeLCA?cluster=devnet",
+      "action_id": "524660b2-1cdd-4c3e-9e68-35450f652e8d",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { loadTraceSummaries, summarizeTraces, buildCommitTimeline, calculateVelocity } from "@/lib/traces";
 import { CopyButton } from "@/components/CopyButton";
+import { TraceDetail } from "@/components/TraceDetail";
 
 const GITHUB_COMMIT_BASE = "https://github.com/M-DEV-1/agent-audit-log/commit";
 
@@ -275,39 +276,9 @@ export default async function Home() {
             {topTraces.length === 0 ? (
               <p className="px-4 py-6 text-sm text-slate-500">No trace files detected yet.</p>
             ) : (
-              <div className="divide-y divide-slate-800">
+              <div>
                 {topTraces.map((trace) => (
-                  <div
-                    key={`${trace.source}-${trace.id}`}
-                    className="grid grid-cols-6 px-4 py-3 text-sm text-slate-200 transition-colors hover:bg-slate-800/50"
-                  >
-                    <span className="truncate font-mono text-xs text-slate-300">
-                      {trace.id}
-                    </span>
-                    <span className="text-xs text-slate-400">
-                      {formatTimestamp(trace.timestamp)}
-                    </span>
-                    <span className="truncate font-mono text-xs text-slate-400">
-                      {trace.commitSha ?? "—"}
-                    </span>
-                    <span className="text-xs capitalize text-slate-400">{trace.source}</span>
-                    <span className="text-xs text-slate-300">{trace.files ?? "—"}</span>
-                    <span className="text-xs">
-                      {trace.solanaTx ? (
-                        <Link
-                          href={`https://solscan.io/tx/${trace.solanaTx}?cluster=devnet`}
-                          className="text-emerald-300 hover:text-emerald-200 transition-colors"
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`View Solana transaction ${trace.solanaTx.slice(0, 8)} on Solscan`}
-                        >
-                          Anchored
-                        </Link>
-                      ) : (
-                        <span className="text-slate-500">Pending</span>
-                      )}
-                    </span>
-                  </div>
+                  <TraceDetail key={`${trace.source}-${trace.id}`} trace={trace} />
                 ))}
               </div>
             )}
