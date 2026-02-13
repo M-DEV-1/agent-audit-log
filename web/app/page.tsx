@@ -46,7 +46,7 @@ export default async function Home() {
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16">
         <header className="space-y-4">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
-            Agent Audit Log · Mission Control
+            Agent Audit Log · Mission Control · Live Trace Dashboard
           </p>
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-semibold sm:text-4xl">
