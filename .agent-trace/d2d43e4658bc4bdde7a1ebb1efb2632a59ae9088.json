@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "52ae4af5-e27e-4968-af06-f8c5b67c9463",
+  "timestamp": "2026-02-13T20:15:38.761071Z",
+  "vcs": {
+    "type": "git",
+    "revision": "d2d43e4658bc4bdde7a1ebb1efb2632a59ae9088"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/verify-trace.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 168
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add standalone trace verification CLI for AI authorship proof",
+    "parent_commit": "5ae9fb185ec34490dafed0565c507978720927c3",
+    "phase": "verification-tooling",
+    "trace_hash": "3816fb07f3f3a513a928ba8eb2132844af5a59fc0989f56fbaa50d5b54dafae8",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3HF6uBgtpCstBERzTt3T4WU2QyimDJaVCxh7pdXJGcXo2ki6XMzVtaHHZJZ6Ut6UAin41rh5bn9c3enaC421PUDs",
+      "explorer": "https://solscan.io/tx/3HF6uBgtpCstBERzTt3T4WU2QyimDJaVCxh7pdXJGcXo2ki6XMzVtaHHZJZ6Ut6UAin41rh5bn9c3enaC421PUDs?cluster=devnet",
+      "action_id": "9ebcbce9-9573-46da-a3fe-38e0e5e75537",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
