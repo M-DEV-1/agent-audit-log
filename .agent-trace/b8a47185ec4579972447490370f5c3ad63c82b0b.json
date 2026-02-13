@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "id": "d7a3b9c2-4e8f-4a1d-9c6b-7f2e5a8d3c1f",
+  "timestamp": "2026-02-13T17:52:15Z",
+  "vcs": {
+    "type": "git",
+    "revision": "b8a47185ec4579972447490370f5c3ad63c82b0b"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 46,
+              "end_line": 48
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): enhance header subtitle to highlight live trace dashboard",
+    "parent_commit": "989f5618dbe367a9db11b3adee0122cdb9a3818d",
+    "trace_hash": "1da18affe50830ade3251ca0adb8cae9352f0b4c9e03fcf3624137c25f50d052",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "5S7KQHe8nBYKuTmHNbXUmMHEj7AqH9K2wHe5Ye8zMFfFMAzirrQoPFoTJz8wW2UY4h1obiptNRkTn9LG8E762V1d",
+      "explorer": "https://solscan.io/tx/5S7KQHe8nBYKuTmHNbXUmMHEj7AqH9K2wHe5Ye8zMFfFMAzirrQoPFoTJz8wW2UY4h1obiptNRkTn9LG8E762V1d?cluster=devnet",
+      "action_id": "6fa88cee-e979-4a9d-9009-fe0121ab2296",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

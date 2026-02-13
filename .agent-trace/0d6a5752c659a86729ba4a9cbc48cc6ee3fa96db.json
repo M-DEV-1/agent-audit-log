@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "id": "e9f2b3c4-5d7a-4e8b-9f1c-2a6d3e7b8c9d",
+  "timestamp": "2026-02-13T18:06:50Z",
+  "vcs": {
+    "type": "git",
+    "revision": "0d6a5752c659a86729ba4a9cbc48cc6ee3fa96db"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 109,
+              "end_line": 109
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): clarify Trace ID label as Trace UUID for better semantic precision",
+    "parent_commit": "b8a47185ec4579972447490370f5c3ad63c82b0b",
+    "trace_hash": "ce45056ba3b9b53033ff55a7b2bcb38e6a416012f5ae434ece590c3ef050a792",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "66Bjf4vp3y5osZQnQQHrXjcmM7CLqD2g1D1bp1TvcnxamQk1EE5XBTUcxbf7ajizhXRLAF7wh9cii2KgEziBqMy9",
+      "explorer": "https://solscan.io/tx/66Bjf4vp3y5osZQnQQHrXjcmM7CLqD2g1D1bp1TvcnxamQk1EE5XBTUcxbf7ajizhXRLAF7wh9cii2KgEziBqMy9?cluster=devnet",
+      "action_id": "930527e9-9c23-47c3-ab6f-e4ee1abc3417",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

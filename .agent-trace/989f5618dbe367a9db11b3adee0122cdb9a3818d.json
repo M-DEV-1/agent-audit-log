@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "id": "c4f8e2a1-9b7d-4c3f-a8e5-1d2c3b4a5f6e",
+  "timestamp": "2026-02-13T17:36:41Z",
+  "vcs": {
+    "type": "git",
+    "revision": "989f5618dbe367a9db11b3adee0122cdb9a3818d"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 35
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "docs(readme): polish submission artifact with RFC trace highlights and Solscan verification links",
+    "parent_commit": "72eaf568441b73c63e97fe1fa8ad998025cac9fb",
+    "trace_hash": "33c2f22a8c0b57929b0dd2b18ea572ec40d9a6a4a79e2b64cf3d7ce4164f7f96",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4xDsbYhu8DBmnre86w8dx38fpL1mVo6LhMBiYbyVJj8cZ1uRp58PJrHLdGXmFpPPTt3QXhPzjA5WVYeT2pdCzTzZ",
+      "explorer": "https://solscan.io/tx/4xDsbYhu8DBmnre86w8dx38fpL1mVo6LhMBiYbyVJj8cZ1uRp58PJrHLdGXmFpPPTt3QXhPzjA5WVYeT2pdCzTzZ?cluster=devnet",
+      "action_id": "ba7aa0cb-1f2c-4b8a-9c67-fa9a16d96ed5",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
