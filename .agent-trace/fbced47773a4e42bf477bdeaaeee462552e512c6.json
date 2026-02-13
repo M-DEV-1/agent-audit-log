@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "fc9de81c-537b-4db4-bea0-44d9f1b55253",
+  "timestamp": "2026-02-13T20:14:15.208326Z",
+  "vcs": {
+    "type": "git",
+    "revision": "fbced47773a4e42bf477bdeaaeee462552e512c6"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 247
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "refactor(ui): simplify dashboard - remove chart, merge traces tables, keep clean theme",
+    "parent_commit": "5acf8c343bd1b87dd8cae43a8147c38721cf1975",
+    "phase": "ui-cleanup",
+    "trace_hash": "c573b98122423dd0e2e669a3ea112b46a0f8aee1df0724e1d6ba7291055a2684",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3QVQwKrCkiJVCZfUg8qAz5W6TQpgEeTSfx6m5aCgCyMWvVEgWM3AoJrGL1uYnTbuvNw12bkp1XWeM6b1KD7c6X1H",
+      "explorer": "https://solscan.io/tx/3QVQwKrCkiJVCZfUg8qAz5W6TQpgEeTSfx6m5aCgCyMWvVEgWM3AoJrGL1uYnTbuvNw12bkp1XWeM6b1KD7c6X1H?cluster=devnet",
+      "action_id": "0dc347ae-de1b-4576-85c2-473d7e239aed",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

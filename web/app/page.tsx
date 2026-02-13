@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import Link from "next/link";
-import { loadTraceSummaries, summarizeTraces, buildCommitTimeline, calculateVelocity } from "@/lib/traces";
+import { loadTraceSummaries, summarizeTraces } from "@/lib/traces";
 import { CopyButton } from "@/components/CopyButton";
 import { TraceDetail } from "@/components/TraceDetail";
 
@@ -27,22 +27,13 @@ function formatTimestamp(timestamp?: string) {
 export default async function Home() {
   const traces = await loadTraceSummaries();
   const analytics = summarizeTraces(traces);
-  const timeline = buildCommitTimeline(traces);
-  const velocity = calculateVelocity(traces);
-  const topTraces = traces.slice(0, 8);
+  const recentTraces = traces.slice(0, 12); // Show 12 most recent
   const year = new Date().getUTCFullYear();
   const anchorProgress = analytics.total ? Math.round((analytics.anchored / analytics.total) * 100) : 0;
   const latestTrace = traces[0];
-  const activityLog = traces.slice(0, 6);
   const sourceDistribution = [
     { label: "RFC traces", value: analytics.bySource.agent },
     { label: "Legacy traces", value: analytics.bySource.legacy },
-  ];
-
-  const nextPhaseStatus = [
-    { label: "Next ship", value: "Status Panel (highlights what ships next)" },
-    { label: "Mission focus", value: "Phase 3 prep · Meta Mission Board context" },
-    { label: "Trace discipline", value: "Build → commit → trace → anchor → push" },
   ];
 
   return (
@@ -62,6 +53,7 @@ export default async function Home() {
           </div>
         </header>
 
+        {/* Hero Stats */}
         <section className="grid gap-4 md:grid-cols-3">
           <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-slate-700 hover:bg-slate-900/60">
             <p className="text-sm text-slate-400">Total Traces</p>
@@ -92,85 +84,16 @@ export default async function Home() {
             </p>
             <p className="mt-1 text-xs text-slate-500">
               {analytics.latestTimestamp
-                ? `${formatTimestamp(analytics.latestTimestamp)} · ${analytics.latestCommit ?? "–"}`
+                ? `${formatTimestamp(analytics.latestTimestamp)}`
                 : "Awaiting next trace"}
             </p>
           </div>
         </section>
 
-        <section className="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/40 to-slate-900/20 p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-xl font-semibold">Commit Activity (Last 24h)</h2>
-              <p className="text-xs text-slate-500 mt-1">Real-time trace generation cadence</p>
-            </div>
-            <div className="text-right">
-              <p className="text-2xl font-semibold">{timeline.reduce((sum, d) => sum + d.count, 0)}</p>
-              <p className="text-xs text-slate-500">commits</p>
-            </div>
-          </div>
-          <div className="relative h-32 flex items-end gap-1">
-            {timeline.map((datapoint, i) => {
-              const maxCount = Math.max(...timeline.map(d => d.count), 1);
-              const height = (datapoint.count / maxCount) * 100;
-              const anchoredHeight = (datapoint.anchored / Math.max(datapoint.count, 1)) * height;
-              
-              return (
-                <div key={i} className="flex-1 flex flex-col justify-end items-center group relative">
-                  <div 
-                    className="w-full bg-slate-700 rounded-t transition-all hover:bg-slate-600"
-                    style={{ height: `${height}%`, minHeight: datapoint.count > 0 ? '4px' : '2px' }}
-                  >
-                    {datapoint.anchored > 0 && (
-                      <div 
-                        className="w-full bg-emerald-400 rounded-t"
-                        style={{ height: `${anchoredHeight}%` }}
-                      />
-                    )}
-                  </div>
-                  <div className="absolute -bottom-6 text-[9px] text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    {datapoint.hour}
-                  </div>
-                  <div className="absolute -top-8 hidden group-hover:block bg-slate-800 text-xs px-2 py-1 rounded border border-slate-700 whitespace-nowrap z-10">
-                    {datapoint.hour}: {datapoint.count} ({datapoint.anchored} anchored)
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="flex items-center justify-between mt-8 text-xs text-slate-500">
-            <span>24h ago</span>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 bg-slate-700 rounded" />
-                <span>Total</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 bg-emerald-400 rounded" />
-                <span>Anchored</span>
-              </div>
-            </div>
-            <span>Now</span>
-          </div>
-          <div className="mt-6 grid grid-cols-3 gap-4">
-            <div className="text-center">
-              <p className="text-2xl font-semibold text-sky-400">{velocity.commitsLast24h}</p>
-              <p className="text-xs text-slate-500 mt-1">Last 24h</p>
-            </div>
-            <div className="text-center border-x border-slate-800">
-              <p className="text-2xl font-semibold text-emerald-400">{velocity.commitsPerHour}</p>
-              <p className="text-xs text-slate-500 mt-1">Per hour</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-semibold text-amber-400">{velocity.peakCount}</p>
-              <p className="text-xs text-slate-500 mt-1">Peak ({velocity.peakHour})</p>
-            </div>
-          </div>
-        </section>
-
+        {/* Current Workstream + Solana Anchor Health */}
         <section className="grid gap-4 lg:grid-cols-3">
           <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 lg:col-span-2">
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between mb-4">
               <div>
                 <p className="text-sm text-slate-400">Current Workstream</p>
                 <h2 className="text-2xl font-semibold break-words max-w-full">
@@ -184,26 +107,32 @@ export default async function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  View anchor
+                  View anchor ↗
                 </Link>
               )}
             </div>
-            <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-3">
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Trace UUID</p>
-                <p className="text-sm text-slate-200 break-words">{latestTrace?.id ?? "–"}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-slate-200 break-all font-mono">{latestTrace?.id.slice(0, 8) ?? "–"}...</p>
+                  {latestTrace?.id && <CopyButton text={latestTrace.id} label="ID" />}
+                </div>
               </div>
               <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Commit</p>
                 {latestTrace?.commitSha ? (
-                  <Link
-                    href={`${GITHUB_COMMIT_BASE}/master`}
-                    className="text-sm text-slate-200 font-mono break-all hover:text-emerald-200"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {latestTrace.commitSha}
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`${GITHUB_COMMIT_BASE}/${latestTrace.commitSha}`}
+                      className="text-sm text-slate-200 font-mono break-all hover:text-emerald-200"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {latestTrace.commitSha.slice(0, 7)}
+                    </Link>
+                    <CopyButton text={latestTrace.commitSha} label="SHA" />
+                  </div>
                 ) : (
                   <p className="text-sm text-slate-200 font-mono">—</p>
                 )}
@@ -215,22 +144,23 @@ export default async function Home() {
             </div>
             <p className="mt-4 text-sm text-slate-400">
               {latestTrace
-                ? "Live viewer telemetry. This workstream tracks the latest RFC or legacy artifact and its Solana anchor metadata."
-                : "Waiting for the first trace to arrive so we can kick off the Phase 2 tracking ribbon."}
+                ? "Latest RFC trace with Solana anchor metadata. 100% AI-authored, verifiable on-chain."
+                : "Waiting for the first trace to arrive."}
             </p>
           </div>
+          
           <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-            <p className="text-sm text-slate-400">Solana anchor health</p>
+            <p className="text-sm text-slate-400">Solana Anchor Health</p>
             <p className="mt-2 text-3xl font-semibold">{anchorProgress}%</p>
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">of traces anchored</p>
             <div className="mt-4 h-2 rounded-full bg-slate-800">
               <div
-                className="h-full rounded-full bg-emerald-400"
+                className="h-full rounded-full bg-emerald-400 transition-all"
                 style={{ width: `${anchorProgress}%` }}
               />
             </div>
             <p className="mt-3 text-xs text-slate-500">
-              {analytics.anchored} confirmed anchors · {analytics.unanchored} pending
+              {analytics.anchored} confirmed · {analytics.unanchored} pending
             </p>
             <div className="mt-4 space-y-2">
               {sourceDistribution.map((source) => (
@@ -241,7 +171,7 @@ export default async function Home() {
                   </p>
                   <div className="mt-1 h-1 rounded-full bg-slate-900">
                     <div
-                      className="h-full rounded-full bg-sky-500"
+                      className="h-full rounded-full bg-sky-500 transition-all"
                       style={{ width: `${Math.min(100, Math.max(0, (source.value / Math.max(analytics.total, 1)) * 100))}%` }}
                     />
                   </div>
@@ -251,16 +181,17 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Recent Traces (Merged with Activity Log) */}
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-xl font-semibold">Recent traces</h2>
+              <h2 className="text-xl font-semibold">Recent Traces</h2>
               <p className="text-sm text-slate-500">
-                Latest eight artifacts across RFC and legacy traces. Filters, charts, and drawers arrive next.
+                Latest artifacts with RFC compliance and Solana anchor verification
               </p>
             </div>
             <p className="text-xs text-slate-500">
-              Data source: `traces/` + `.agent-trace/`
+              Live stream · {recentTraces.length} shown
             </p>
           </div>
 
@@ -273,11 +204,11 @@ export default async function Home() {
               <span>Files</span>
               <span>Solana</span>
             </div>
-            {topTraces.length === 0 ? (
+            {recentTraces.length === 0 ? (
               <p className="px-4 py-6 text-sm text-slate-500">No trace files detected yet.</p>
             ) : (
               <div>
-                {topTraces.map((trace) => (
+                {recentTraces.map((trace) => (
                   <TraceDetail key={`${trace.source}-${trace.id}`} trace={trace} />
                 ))}
               </div>
@@ -285,137 +216,41 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <h2 className="text-xl font-semibold">Rolling activity log</h2>
-              <p className="text-sm text-slate-500">
-                Most recent traces, sorted newest first. Each entry links to the Solana anchor (if available) and the last commit descriptor.
-              </p>
+        {/* Footer */}
+        <footer className="space-y-6 border-t border-slate-800 pt-10">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-sm text-slate-400">Mission Active</span>
             </div>
-            <p className="text-xs text-slate-500">Live stream · Refreshed on every build</p>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40">
-            <div className="grid grid-cols-4 border-b border-slate-800 bg-slate-900/70 px-4 py-2 text-xs uppercase tracking-wide text-slate-500">
-              <span>Trace</span>
-              <span>Source</span>
-              <span>Commit</span>
-              <span>Solana</span>
-            </div>
-            {activityLog.length === 0 ? (
-              <p className="px-4 py-6 text-sm text-slate-500">No activity yet.</p>
-            ) : (
-              <div className="divide-y divide-slate-800">
-                {activityLog.map((trace) => (
-                  <div
-                    key={trace.path}
-                    className="grid grid-cols-4 gap-2 px-4 py-3 text-sm text-slate-200 transition-colors hover:bg-slate-800/50 cursor-pointer"
-                    style={{ gridTemplateColumns: "2fr 1fr 1fr auto" }}
-                  >
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <p className="text-xs font-semibold text-slate-300 truncate">{trace.label ?? trace.id}</p>
-                        <CopyButton text={trace.id} label="ID" />
-                      </div>
-                      <p className="text-xs text-slate-500 truncate">{formatTimestamp(trace.timestamp)}</p>
-                    </div>
-                    <span className="text-xs capitalize text-slate-400 truncate">{trace.source}</span>
-                    <span className="text-xs font-mono text-slate-400 truncate">{trace.commitSha ?? "—"}</span>
-                    <span className="text-xs flex items-center gap-2">
-                      {trace.solanaTx ? (
-                        <>
-                          <Link
-                            href={`https://solscan.io/tx/${trace.solanaTx}?cluster=devnet`}
-                            className="text-emerald-300 hover:text-emerald-200 transition-colors"
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label={`View Solana anchor for trace ${trace.id.slice(0, 8)} on Solscan devnet`}
-                          >
-                            View
-                          </Link>
-                          <CopyButton text={trace.solanaTx} label="TX" />
-                        </>
-                      ) : (
-                        <span className="text-slate-500">Pending</span>
-                      )}
-                    </span>
-                  </div>
-                ))}
+            <div className="flex flex-wrap gap-6 text-sm text-slate-500">
+              <div>
+                <span className="text-slate-400">RFC 0.1.0:</span> {analytics.total} traces
               </div>
-            )}
-          </div>
-        </section>
-        <section className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <h2 className="text-xl font-semibold">Status Panel</h2>
-              <p className="text-sm text-slate-500">Highlights what ships next so the roadmap stays transparent.</p>
-            </div>
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Live</p>
-          </div>
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30 p-4">
-            <div className="grid gap-3 sm:grid-cols-3">
-              {nextPhaseStatus.map((item) => (
-                <div key={item.label} className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-                  <p className="text-[0.65rem] uppercase tracking-[0.3em] text-slate-500">{item.label}</p>
-                  <p className="mt-2 text-sm text-slate-100">{item.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <footer className="mt-16 space-y-6 border-t border-slate-800 pt-8">
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Mission Status</p>
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span className="text-sm text-emerald-400 font-semibold">Active</span>
+              <div>
+                <span className="text-slate-400">Anchored:</span> {anchorProgress}%
               </div>
-              <p className="text-xs text-slate-500 mt-1">Autonomous agent shipping RFC traces + Solana anchors</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Compliance</p>
-              <p className="text-sm text-slate-300">RFC 0.1.0 · SHA-256 hashing · Devnet anchoring</p>
-              <p className="text-xs text-slate-500 mt-1">{analytics.anchored}/{analytics.total} traces verified on-chain</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Deployment</p>
-              <p className="text-sm text-slate-300">Vercel · Next.js 16 · Auto-deploy on push</p>
-              <p className="text-xs text-slate-500 mt-1">Build time: ~7s · Static generation</p>
+              <div>
+                <span className="text-slate-400">Platform:</span> Vercel · Next.js 16
+              </div>
             </div>
           </div>
-          <div className="flex flex-col gap-2 border-t border-slate-900/60 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {year} Agent Audit Log · Colosseum Agent Hackathon</p>
-            <div className="flex flex-wrap gap-4 text-slate-300">
-              <Link
-                href="https://github.com/M-DEV-1/agent-audit-log"
-                className="transition hover:text-emerald-300"
-                target="_blank"
-                rel="noreferrer"
-              >
+          <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
+            <p>
+              © {year} Agent Audit Log · Colosseum Hackathon · 100% AI-authored
+            </p>
+            <div className="flex gap-4">
+              <Link href="https://github.com/M-DEV-1/agent-audit-log" className="hover:text-slate-400">
                 GitHub
               </Link>
-              <Link
-                href="https://agent-audit.mdev1.me"
-                className="transition hover:text-emerald-300"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live Dashboard
+              <Link href="https://agent-audit.mdev1.me" className="hover:text-slate-400">
+                Dashboard
               </Link>
-              <Link
-                href="https://colosseum.com/agent-hackathon/projects/agent-audit-log"
-                className="transition hover:text-emerald-300"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Colosseum Project
+              <Link href="https://colosseum.org" className="hover:text-slate-400">
+                Colosseum
               </Link>
             </div>
           </div>
