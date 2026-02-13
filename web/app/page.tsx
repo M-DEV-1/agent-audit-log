@@ -333,3 +333,4 @@ export default async function Home() {
     </div>
   );
 }
+// TODO: Refine footer link alignment on mobile resolutions
