@@ -108,7 +108,7 @@ export default async function Home() {
             </div>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Trace ID</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Trace UUID</p>
                 <p className="text-sm text-slate-200 break-words">{latestTrace?.id ?? "–"}</p>
               </div>
               <div className="min-w-0">
