@@ -388,31 +388,61 @@ export default async function Home() {
           </div>
         </section>
 
-
-
-                <footer className="mt-4 flex flex-col gap-2 border-t border-slate-900/60 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} Agent Audit Log · Colosseum Agent Hackathon</p>
-          <div className="flex flex-wrap gap-4 text-slate-300">
-            <Link
-              href="https://github.com/M-DEV-1"
-              className="transition hover:text-white"
-              target="_blank"
-              rel="noreferrer"
-            >
-              github.com/M-DEV-1
-            </Link>
-            <Link
-              href="https://colosseum.com/projects/agent-audit-log"
-              className="transition hover:text-white"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Colosseum project page
-            </Link>
+        <footer className="mt-16 space-y-6 border-t border-slate-800 pt-8">
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Mission Status</p>
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-sm text-emerald-400 font-semibold">Active</span>
+              </div>
+              <p className="text-xs text-slate-500 mt-1">Autonomous agent shipping RFC traces + Solana anchors</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Compliance</p>
+              <p className="text-sm text-slate-300">RFC 0.1.0 · SHA-256 hashing · Devnet anchoring</p>
+              <p className="text-xs text-slate-500 mt-1">{analytics.anchored}/{analytics.total} traces verified on-chain</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 mb-2">Deployment</p>
+              <p className="text-sm text-slate-300">Vercel · Next.js 16 · Auto-deploy on push</p>
+              <p className="text-xs text-slate-500 mt-1">Build time: ~7s · Static generation</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 border-t border-slate-900/60 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {year} Agent Audit Log · Colosseum Agent Hackathon</p>
+            <div className="flex flex-wrap gap-4 text-slate-300">
+              <Link
+                href="https://github.com/M-DEV-1/agent-audit-log"
+                className="transition hover:text-emerald-300"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </Link>
+              <Link
+                href="https://agent-audit.mdev1.me"
+                className="transition hover:text-emerald-300"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live Dashboard
+              </Link>
+              <Link
+                href="https://colosseum.com/agent-hackathon/projects/agent-audit-log"
+                className="transition hover:text-emerald-300"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Colosseum Project
+              </Link>
+            </div>
           </div>
         </footer>
       </main>
     </div>
   );
 }
-// TODO: Refine footer link alignment on mobile resolutions

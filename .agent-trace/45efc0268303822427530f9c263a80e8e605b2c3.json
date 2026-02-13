@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "id": "9132f033-8cd1-4bc3-83f4-554a4d746b7e",
+  "timestamp": "2026-02-13T18:57:21.611545Z",
+  "vcs": {
+    "type": "git",
+    "revision": "45efc0268303822427530f9c263a80e8e605b2c3"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 390,
+              "end_line": 433
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): enhance footer with mission status badges, compliance stats, and deployment info",
+    "parent_commit": "a663409e1f7185895b7487bada78b94c102706bb",
+    "trace_hash": "ad45ca8e01bf8f04a3f82dd36a11cfddc8fdf062745cbaa768d0c565b26ae359",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "39YqUq1uM8L7G5qPMVsAnjqJPiUcqDXE9hkyy9zhzLH1Avszwy4UsebdkaQZ6VsD5wGTGTL8Mn3fU9sJeot1sBgZ",
+      "explorer": "https://solscan.io/tx/39YqUq1uM8L7G5qPMVsAnjqJPiUcqDXE9hkyy9zhzLH1Avszwy4UsebdkaQZ6VsD5wGTGTL8Mn3fU9sJeot1sBgZ?cluster=devnet",
+      "action_id": "551dd8be-e410-4b42-961f-69ea55c92f90",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
