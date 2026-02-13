@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "id": "1f62a9e2-c5b8-4054-9709-29077992e320",
+  "timestamp": "2026-02-12T22:07:08+00:00",
+  "vcs": {
+    "type": "git",
+    "revision": "89f37d08d0e638b08b9ef26d6dc520d44f943028"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 3,
+              "end_line": 10
+            },
+            {
+              "start_line": 35,
+              "end_line": 46
+            },
+            {
+              "start_line": 113,
+              "end_line": 130
+            },
+            {
+              "start_line": 286,
+              "end_line": 312
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): highlight upcoming shipment",
+    "parent_commit": "b9bf2dfd9afe8704c1bc2d5341a7164944f39f1a",
+    "trace_hash": "710354425ecad6fe8ce7df7f03eb32308cf80004d4481585fea1829d3cb7c4f5",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3CMyQrbaT9NSHirPkWEsovazDCSPUkebZy6YdZwvVRdoMe65jtK2guBSpV6ZXX6koYEA2aeRf1h1gqPc57TNuv2c",
+      "explorer": "https://solscan.io/tx/3CMyQrbaT9NSHirPkWEsovazDCSPUkebZy6YdZwvVRdoMe65jtK2guBSpV6ZXX6koYEA2aeRf1h1gqPc57TNuv2c?cluster=devnet",
+      "action_id": "10ca3ef2-15aa-4db4-bc5a-f4e8e52cfad2",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

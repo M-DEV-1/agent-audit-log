@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "id": "0f45fa02-0b95-48cf-a28d-f9fb2aaf999b",
+  "timestamp": "2026-02-12T21:55:07+00:00",
+  "vcs": {
+    "type": "git",
+    "revision": "c876ed72c88fa03e52403f55140ada89703e1332"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "docs/colosseum-project-intro.md",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "docs: highlight live viewer updates",
+    "parent_commit": "2d7b4c0f5fb40784071aeaa5d52a8d9ef4339b0a",
+    "trace_hash": "400226878501597af732e960b0491a8919b0c4c128cd6c7c0a71af6407afa3d1",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "2RdXQFG8U8vWtnAZsaNw5LUfy5c2hDLbTr7nn6T6xu9VuHRLF9K8L4NPFtYHpUWK5TvSC7X1DYpxncQAbwhe31JA",
+      "explorer": "https://solscan.io/tx/2RdXQFG8U8vWtnAZsaNw5LUfy5c2hDLbTr7nn6T6xu9VuHRLF9K8L4NPFtYHpUWK5TvSC7X1DYpxncQAbwhe31JA?cluster=devnet",
+      "action_id": "9537d6fc-0d15-43e8-ae69-5430bdcb874d",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

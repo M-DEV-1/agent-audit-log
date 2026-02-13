@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "id": "518dc55f-e2d6-4e5b-a577-63e6e54fdb57",
+  "timestamp": "2026-02-12T21:56:56+00:00",
+  "vcs": {
+    "type": "git",
+    "revision": "9e6626f7454dca0ceda9d06047695f387fb3d8b9"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 99,
+              "end_line": 117
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "fix(viewer): prevent workstream overlap",
+    "parent_commit": "c876ed72c88fa03e52403f55140ada89703e1332",
+    "trace_hash": "0246e6dba451e98574d7214071dcb9ac23982e84c7804c9d3e1aac3d0a1cdf57",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "2meFUK7gSE3bBabKD6vASXPqUSSt3Z8CdUCtBvpPnwVFZJycz3pEJ26GKRus94hSmN9WWVFuSyoD83MqnyxS1Efg",
+      "explorer": "https://solscan.io/tx/2meFUK7gSE3bBabKD6vASXPqUSSt3Z8CdUCtBvpPnwVFZJycz3pEJ26GKRus94hSmN9WWVFuSyoD83MqnyxS1Efg?cluster=devnet",
+      "action_id": "754beb10-7ffd-4fde-b5ad-a871e2625294",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

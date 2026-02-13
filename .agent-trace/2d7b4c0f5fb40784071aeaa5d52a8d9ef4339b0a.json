@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "id": "11baaf8c-18cf-4276-a6ca-0d9f1da7096b",
+  "timestamp": "2026-02-12T21:45:36+00:00",
+  "vcs": {
+    "type": "git",
+    "revision": "2d7b4c0f5fb40784071aeaa5d52a8d9ef4339b0a"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 25,
+              "end_line": 37
+            },
+            {
+              "start_line": 78,
+              "end_line": 157
+            },
+            {
+              "start_line": 215,
+              "end_line": 272
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add Phase 2 telemetry",
+    "parent_commit": "4917d0dd3aec015dd4b17f0b73a2043215bed77d",
+    "trace_hash": "0f8a1ea08cc9bf5b27efd201f4fc893b504286d1ed5a78c91c2c241a3be2318c",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4FoMDUsUgXChy9dJv4uCy9jU3wzcjpd6zh6wDpPsk2oymPKZhbM8NJGfciRq1sAyFabZ4zLutvqPkY6hWQj9hv6v",
+      "explorer": "https://solscan.io/tx/4FoMDUsUgXChy9dJv4uCy9jU3wzcjpd6zh6wDpPsk2oymPKZhbM8NJGfciRq1sAyFabZ4zLutvqPkY6hWQj9hv6v?cluster=devnet",
+      "action_id": "fcd576ca-3cd1-43bf-99b2-8b1bb5e2af48",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "id": "75fc38f9-3832-4375-b040-d02642f9eba6",
+  "timestamp": "2026-02-12T21:59:35+00:00",
+  "vcs": {
+    "type": "git",
+    "revision": "b9bf2dfd9afe8704c1bc2d5341a7164944f39f1a"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 83,
+              "end_line": 89
+            },
+            {
+              "start_line": 238,
+              "end_line": 254
+            },
+            {
+              "start_line": 257,
+              "end_line": 263
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "fix(viewer): tidy rolling log layout",
+    "parent_commit": "9e6626f7454dca0ceda9d06047695f387fb3d8b9",
+    "trace_hash": "d09855096a9a314ff91709601122fa7fdc67976912dcd28cbe6a926adbdaa739",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3DSCSwt4gGFJ8gJCKxwoAWov8qTbxU1tEqDxpPJY8H8xyXZhVDMH9ifmaniaa69WzrUt8ZKuneRAGQirAyViLgzZ",
+      "explorer": "https://solscan.io/tx/3DSCSwt4gGFJ8gJCKxwoAWov8qTbxU1tEqDxpPJY8H8xyXZhVDMH9ifmaniaa69WzrUt8ZKuneRAGQirAyViLgzZ?cluster=devnet",
+      "action_id": "0bf75add-e794-401c-bddb-dafcafc7418c",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
