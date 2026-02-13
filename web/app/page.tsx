@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { loadTraceSummaries, summarizeTraces, buildCommitTimeline, calculateVelocity } from "@/lib/traces";
+import { CopyButton } from "@/components/CopyButton";
 
 const GITHUB_COMMIT_BASE = "https://github.com/M-DEV-1/agent-audit-log/commit";
 
@@ -342,22 +343,28 @@ export default async function Home() {
                     style={{ gridTemplateColumns: "2fr 1fr 1fr auto" }}
                   >
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-slate-300 truncate">{trace.label ?? trace.id}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-xs font-semibold text-slate-300 truncate">{trace.label ?? trace.id}</p>
+                        <CopyButton text={trace.id} label="ID" />
+                      </div>
                       <p className="text-xs text-slate-500 truncate">{formatTimestamp(trace.timestamp)}</p>
                     </div>
                     <span className="text-xs capitalize text-slate-400 truncate">{trace.source}</span>
                     <span className="text-xs font-mono text-slate-400 truncate">{trace.commitSha ?? "—"}</span>
-                    <span className="text-xs">
+                    <span className="text-xs flex items-center gap-2">
                       {trace.solanaTx ? (
-                        <Link
-                          href={`https://solscan.io/tx/${trace.solanaTx}?cluster=devnet`}
-                          className="text-emerald-300 hover:text-emerald-200 transition-colors"
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`View Solana anchor for trace ${trace.id.slice(0, 8)} on Solscan devnet`}
-                        >
-                          View anchor
-                        </Link>
+                        <>
+                          <Link
+                            href={`https://solscan.io/tx/${trace.solanaTx}?cluster=devnet`}
+                            className="text-emerald-300 hover:text-emerald-200 transition-colors"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`View Solana anchor for trace ${trace.id.slice(0, 8)} on Solscan devnet`}
+                          >
+                            View
+                          </Link>
+                          <CopyButton text={trace.solanaTx} label="TX" />
+                        </>
                       ) : (
                         <span className="text-slate-500">Pending</span>
                       )}

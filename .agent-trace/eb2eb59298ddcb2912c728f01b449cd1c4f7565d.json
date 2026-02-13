@@ -1,0 +1,70 @@
+{
+  "version": "1.0",
+  "id": "0457d4c8-4f07-4b5c-9382-63973b88fa81",
+  "timestamp": "2026-02-13T19:07:37.038813Z",
+  "vcs": {
+    "type": "git",
+    "revision": "eb2eb59298ddcb2912c728f01b449cd1c4f7565d"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/components/CopyButton.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 41
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 5,
+              "end_line": 5
+            },
+            {
+              "start_line": 347,
+              "end_line": 350
+            },
+            {
+              "start_line": 355,
+              "end_line": 368
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(viewer): add copy-to-clipboard buttons for trace IDs and Solscan transaction hashes",
+    "parent_commit": "059eeb76de3d89e07211f520656a25843459bae7",
+    "trace_hash": "c667fb8c21d4d717c5d3c59d87748d4c5ce69d3a4862e61ebd9bf7452ac8bc68",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "3BUb9XKxMviBpi4UUPdV14Q4DhUC2rDXAVSmvLQByMPrJB58oPyfj7N7UBFw2uZxpakDLNpt8fDhVQxjBacLoBzu",
+      "explorer": "https://solscan.io/tx/3BUb9XKxMviBpi4UUPdV14Q4DhUC2rDXAVSmvLQByMPrJB58oPyfj7N7UBFw2uZxpakDLNpt8fDhVQxjBacLoBzu?cluster=devnet",
+      "action_id": "4b2c4a46-8696-40e9-b124-f4b2712d6b0f",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
