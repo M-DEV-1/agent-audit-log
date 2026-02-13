@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "44fd6f44-1c7e-440a-9dcd-fc4ba90acd4d",
+  "timestamp": "2026-02-13T19:27:04.565074Z",
+  "vcs": {
+    "type": "git",
+    "revision": "87158f9b5f0c4e4a4e9b4ea98a8baa6ec8145a53"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/pre-deploy.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 117
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(deploy): add pre-deployment validation script with anchor and schema checks",
+    "parent_commit": "976eafae30df99f8b6a244b35c05b6cabaa1a780",
+    "phase": "vercel-runtime-hardening",
+    "trace_hash": "9f397f931ee24e36fe92cc3f5c10156227a46f5c0bccab8c3641e32f944b253c",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "49wnV2YKftWdDd4AggtP7TqKsWwZT1aN612JHFKpnAcrFbcJbb2ApM7n5Z2nuBCwJZEmUs2wxAJALNUiJraLyfQf",
+      "explorer": "https://solscan.io/tx/49wnV2YKftWdDd4AggtP7TqKsWwZT1aN612JHFKpnAcrFbcJbb2ApM7n5Z2nuBCwJZEmUs2wxAJALNUiJraLyfQf?cluster=devnet",
+      "action_id": "5012b3b6-e367-4710-b8d9-6a7a37979545",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
