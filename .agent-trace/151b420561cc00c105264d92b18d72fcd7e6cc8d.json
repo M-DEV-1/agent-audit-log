@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "b06bfd54-a544-48df-a76a-ee2e09ba76a5",
+  "timestamp": "2026-02-13T21:08:48.951390Z",
+  "vcs": {
+    "type": "git",
+    "revision": "151b420561cc00c105264d92b18d72fcd7e6cc8d"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/api/verify/route.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 33,
+              "end_line": 92
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "fix(verify): correct trace path resolution and hash verification in API endpoint",
+    "parent_commit": "c86c1e5ab87e9f3188c81cba3c32756eb6b682cb",
+    "phase": "bug-fix",
+    "trace_hash": "f50d7abed42f15b0fec7417efbb642b17dec3e2a6f2f0214bd323e03a093e467",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "4UTkv6yTWHnK6rr5s563PZX2Nb5fRykWv5yhunq7YM2XEYhHDFvnpgWawGwqoiV6z3BQbgHk3fAMFYWLLHgqP7J1",
+      "explorer": "https://solscan.io/tx/4UTkv6yTWHnK6rr5s563PZX2Nb5fRykWv5yhunq7YM2XEYhHDFvnpgWawGwqoiV6z3BQbgHk3fAMFYWLLHgqP7J1?cluster=devnet",
+      "action_id": "2c16a4b6-9afb-47cf-bc00-6945a1249a58",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}

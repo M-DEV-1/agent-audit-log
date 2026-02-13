@@ -28,8 +28,8 @@ export async function POST(request: NextRequest) {
         );
       }
     } else {
-      // Treat as commit SHA
-      const traceDir = path.join(process.cwd(), '../.agent-trace');
+      // Treat as commit SHA - look in parent directory's .agent-trace
+      const traceDir = path.join(process.cwd(), '..', '.agent-trace');
       
       try {
         const files = await fs.readdir(traceDir);
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
         
         if (!matchingFile) {
           return NextResponse.json(
-            { success: false, error: 'Trace file not found for this commit SHA' },
+            { success: false, error: `Trace file not found for commit SHA: ${trimmed}` },
             { status: 404 }
           );
         }
@@ -47,9 +47,9 @@ export async function POST(request: NextRequest) {
           'utf-8'
         );
         traceData = JSON.parse(fileContent);
-      } catch (error) {
+      } catch (error: any) {
         return NextResponse.json(
-          { success: false, error: 'Failed to read trace file' },
+          { success: false, error: `Failed to read trace: ${error.message}` },
           { status: 500 }
         );
       }
@@ -75,16 +75,19 @@ export async function POST(request: NextRequest) {
     let hashVerified = false;
 
     if (storedHash) {
+      // Remove hash-related fields for canonical computation
       const { trace_hash, trace_hash_scope, solana_anchor, ...metadataWithoutHash } = traceData.metadata || {};
       const cleanTrace = { ...traceData, metadata: metadataWithoutHash };
-      const canonical = JSON.stringify(cleanTrace, Object.keys(cleanTrace).sort(), 0);
+      
+      // Create canonical JSON (sorted keys, compact)
+      const canonical = JSON.stringify(cleanTrace, Object.keys(cleanTrace).sort());
       const computedHash = crypto.createHash('sha256').update(canonical).digest('hex');
       hashVerified = computedHash === storedHash;
 
       if (!hashVerified) {
         return NextResponse.json({
           success: false,
-          error: 'Hash integrity check failed',
+          error: `Hash mismatch: expected ${storedHash.slice(0, 8)}..., got ${computedHash.slice(0, 8)}...`,
         });
       }
     }
