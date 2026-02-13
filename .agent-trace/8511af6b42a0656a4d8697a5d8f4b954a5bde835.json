@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "id": "196d0a02-938b-4098-a624-dc50ba60befa",
+  "timestamp": "2026-02-13T20:53:23.999462Z",
+  "vcs": {
+    "type": "git",
+    "revision": "8511af6b42a0656a4d8697a5d8f4b954a5bde835"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "scripts/detect-missing.sh",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 184
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add missing trace detector with backfill script generator",
+    "parent_commit": "b59d916ab364f287c8f26efcadba1df01a518cee",
+    "phase": "enhanced-verification",
+    "trace_hash": "475b69a356df6e0d11a112337273e64e9709d5bbc1aaa93a560341c36d47e439",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "67Di8h11YtdwXNk6b2DQGfgzbV16zddrhuxTifGA1BSzPtBHgqXT7dAafTCUpakrRjhRPQU2Sg9FDngN4UBinaQF",
+      "explorer": "https://solscan.io/tx/67Di8h11YtdwXNk6b2DQGfgzbV16zddrhuxTifGA1BSzPtBHgqXT7dAafTCUpakrRjhRPQU2Sg9FDngN4UBinaQF?cluster=devnet",
+      "action_id": "94f63809-9771-467e-a9e3-0f3d6235d152",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
