@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "id": "52d79c8d-c837-4c56-acdc-e85537a1ee9b",
+  "timestamp": "2026-02-13T20:17:33.562016Z",
+  "vcs": {
+    "type": "git",
+    "revision": "10964f43d93f01aac961f81c475a52a0b854b3c9"
+  },
+  "tool": {
+    "name": "github-copilot",
+    "version": "claude-sonnet-4.5"
+  },
+  "files": [
+    {
+      "path": "web/app/verify/page.tsx",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 242
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/app/api/verify/route.ts",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai",
+            "model_id": "github-copilot/claude-sonnet-4.5"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 115
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "commit_message": "feat(verify): add public verification page with API for AI authorship proof",
+    "parent_commit": "d0a6459dcfabdd98cfb051e54e7a2c26f63c8904",
+    "phase": "verification-tooling",
+    "trace_hash": "60f5e363e03eb3b4a3de919fb3edd15a05ec923d1998f9cfa8eadf8e44738e87",
+    "trace_hash_scope": "sha256(canonical(record_without_trace_hash))",
+    "solana_anchor": {
+      "tx_hash": "38fVbde6tMxp3qkeKcNRaGZ9QPoP9Qk3GVmJuTJXrhBxRK1KAYrfZ5PB6zNsyAqLm4XjGJLbbFqjSevoF5Mqh6M8",
+      "explorer": "https://solscan.io/tx/38fVbde6tMxp3qkeKcNRaGZ9QPoP9Qk3GVmJuTJXrhBxRK1KAYrfZ5PB6zNsyAqLm4XjGJLbbFqjSevoF5Mqh6M8?cluster=devnet",
+      "action_id": "5d4918d7-445d-405e-8452-a3a183da6e9a",
+      "status": "confirmed",
+      "sponsored": true
+    }
+  }
+}
