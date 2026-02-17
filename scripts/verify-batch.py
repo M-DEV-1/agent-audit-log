@@ -19,9 +19,19 @@ import json
 import os
 import subprocess
 import sys
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Optional
+
+# ANSI color codes
+GREEN = "\033[0;32m"
+RED = "\033[0;31m"
+YELLOW = "\033[1;33m"
+BLUE = "\033[0;34m"
+BOLD = "\033[1m"
+DIM = "\033[2m"
+NC = "\033[0m"  # No Color
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TRACE_DIR = PROJECT_ROOT / ".agent-trace"
@@ -129,41 +139,72 @@ def verify_trace(trace_path: Path, verbose: bool = False) -> VerifyResult:
     )
 
 
+def _status_icon(status: str) -> str:
+    """Return a colored icon for the given status."""
+    if status == "passed":
+        return f"{GREEN}✓{NC}"
+    if status == "failed":
+        return f"{RED}✗{NC}"
+    return f"{YELLOW}⚠{NC}"
+
+
+def _progress_bar(current: int, total: int, width: int = 30) -> str:
+    """Render a simple progress bar string."""
+    filled = int(width * current / max(total, 1))
+    bar = "█" * filled + "░" * (width - filled)
+    pct = current / max(total, 1) * 100
+    return f"{bar} {pct:5.1f}%"
+
+
 def run_batch(commit_range: str, verbose: bool = False) -> BatchReport:
     """Execute batch verification across a commit range."""
     commits = get_commits(commit_range)
     report = BatchReport(commit_range=commit_range)
+    total = len(commits)
 
-    for sha in commits:
+    print(f"\n{BLUE}{BOLD}Scanning {total} commits …{NC}\n")
+
+    for idx, sha in enumerate(commits, 1):
         trace_file = find_trace_file(sha)
         if trace_file is None:
             report.results.append(VerifyResult(commit=sha, status="missing", message="No trace file"))
             if verbose:
-                print(f"  ⚠ {sha[:7]} — no trace file")
+                print(f"  {_status_icon('missing')} {sha[:7]} — {DIM}no trace file{NC}")
             continue
 
         result = verify_trace(trace_file, verbose=verbose)
         report.results.append(result)
         if verbose:
-            icon = "✓" if result.status == "passed" else "✗"
-            print(f"  {icon} {sha[:7]} — {result.status} {result.message}")
+            print(f"  {_status_icon(result.status)} {sha[:7]} — {result.status} {result.message}")
+
+        # Compact progress indicator in non-verbose mode
+        if not verbose and sys.stdout.isatty():
+            sys.stdout.write(f"\r  {_progress_bar(idx, total)} ({idx}/{total})")
+            sys.stdout.flush()
+
+    if not verbose and sys.stdout.isatty():
+        print()  # newline after progress bar
 
     return report
 
 
-def print_report(report: BatchReport) -> None:
-    """Print a human-readable summary."""
+def print_report(report: BatchReport, elapsed: float = 0.0) -> None:
+    """Print a human-readable summary with color."""
+    rate_color = GREEN if report.success_rate == 100 else (YELLOW if report.success_rate >= 80 else RED)
+
     print()
-    print("═" * 42)
-    print("  Batch Verification Report")
-    print("═" * 42)
-    print(f"  Range:   {report.commit_range}")
-    print(f"  Total:   {report.total}")
-    print(f"  Passed:  {report.passed}")
-    print(f"  Failed:  {report.failed}")
-    print(f"  Missing: {report.missing}")
-    print(f"  Rate:    {report.success_rate:.1f}%")
-    print("═" * 42)
+    print(f"{BLUE}{'═' * 48}{NC}")
+    print(f"{BLUE}{BOLD}  Batch Verification Report{NC}")
+    print(f"{BLUE}{'═' * 48}{NC}")
+    print(f"  {BLUE}Range:{NC}   {report.commit_range}")
+    print(f"  {BLUE}Total:{NC}   {report.total}")
+    print(f"  {GREEN}Passed:{NC}  {report.passed}")
+    print(f"  {RED}Failed:{NC}  {report.failed}")
+    print(f"  {YELLOW}Missing:{NC} {report.missing}")
+    print(f"  {BLUE}Rate:{NC}    {rate_color}{report.success_rate:.1f}%{NC}")
+    if elapsed > 0:
+        print(f"  {DIM}Elapsed: {elapsed:.2f}s ({report.total / elapsed:.1f} commits/s){NC}")
+    print(f"{BLUE}{'═' * 48}{NC}")
     print()
 
 
@@ -175,8 +216,10 @@ def main() -> None:
     args = parser.parse_args()
 
     commit_range = "HEAD~500..HEAD" if args.all else args.range
+    t0 = time.monotonic()
     report = run_batch(commit_range, verbose=args.verbose)
-    print_report(report)
+    elapsed = time.monotonic() - t0
+    print_report(report, elapsed=elapsed)
 
     sys.exit(0 if report.failed == 0 else 1)
 
