@@ -21,6 +21,7 @@ import subprocess
 import sys
 import time
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -208,11 +209,42 @@ def print_report(report: BatchReport, elapsed: float = 0.0) -> None:
     print()
 
 
+def export_json(report: BatchReport, output_path: str, elapsed: float = 0.0) -> None:
+    """Export the batch verification report as JSON."""
+    data = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "commit_range": report.commit_range,
+        "summary": {
+            "total": report.total,
+            "passed": report.passed,
+            "failed": report.failed,
+            "missing": report.missing,
+            "success_rate": round(report.success_rate, 2),
+            "elapsed_seconds": round(elapsed, 3),
+        },
+        "results": [
+            {
+                "commit": r.commit,
+                "short": r.commit[:7],
+                "status": r.status,
+                "message": r.message or None,
+                "trace_hash": r.trace_hash,
+                "solana_tx": r.solana_tx,
+            }
+            for r in report.results
+        ],
+    }
+    Path(output_path).write_text(json.dumps(data, indent=2), encoding="utf-8")
+    print(f"  {GREEN}JSON report saved:{NC} {output_path}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Batch trace verification")
     parser.add_argument("range", nargs="?", default="HEAD~20..HEAD", help="Commit range")
     parser.add_argument("--all", action="store_true", help="Verify all commits")
     parser.add_argument("-v", "--verbose", action="store_true")
+    parser.add_argument("--json", dest="json_out", metavar="FILE",
+                        help="Export results to JSON file")
     args = parser.parse_args()
 
     commit_range = "HEAD~500..HEAD" if args.all else args.range
@@ -220,6 +252,9 @@ def main() -> None:
     report = run_batch(commit_range, verbose=args.verbose)
     elapsed = time.monotonic() - t0
     print_report(report, elapsed=elapsed)
+
+    if args.json_out:
+        export_json(report, args.json_out, elapsed=elapsed)
 
     sys.exit(0 if report.failed == 0 else 1)
 
