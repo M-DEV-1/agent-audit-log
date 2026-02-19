@@ -293,3 +293,60 @@ export function calculateVelocity(traces: TraceSummary[]): VelocityMetrics {
     peakCount: peak.count
   };
 }
+
+// ── Trace count aggregation ──────────────────────────────────────
+
+export interface DailyTraceCount {
+  date: string;     // YYYY-MM-DD
+  total: number;
+  anchored: number;
+  bySource: Record<TraceSource, number>;
+}
+
+/**
+ * Aggregate traces into per-day buckets sorted by date (ascending).
+ * Useful for timeline charts and daily activity summaries.
+ */
+export function aggregateTracesByDay(traces: TraceSummary[]): DailyTraceCount[] {
+  const buckets = new Map<string, DailyTraceCount>();
+
+  for (const trace of traces) {
+    const dateKey = trace.timestamp
+      ? new Date(trace.timestamp).toISOString().slice(0, 10)
+      : "unknown";
+
+    let bucket = buckets.get(dateKey);
+    if (!bucket) {
+      bucket = { date: dateKey, total: 0, anchored: 0, bySource: { legacy: 0, agent: 0 } };
+      buckets.set(dateKey, bucket);
+    }
+
+    bucket.total++;
+    if (trace.solanaTx) bucket.anchored++;
+    bucket.bySource[trace.source]++;
+  }
+
+  return Array.from(buckets.values()).sort((a, b) => a.date.localeCompare(b.date));
+}
+
+/**
+ * Compute high-level aggregation metrics from daily counts.
+ */
+export function computeAggregationSummary(dailyCounts: DailyTraceCount[]) {
+  const totalTraces = dailyCounts.reduce((sum, d) => sum + d.total, 0);
+  const totalAnchored = dailyCounts.reduce((sum, d) => sum + d.anchored, 0);
+  const activeDays = dailyCounts.filter(d => d.total > 0).length;
+  const peakDay = dailyCounts.reduce(
+    (max, d) => (d.total > max.total ? d : max),
+    { date: "", total: 0, anchored: 0, bySource: { legacy: 0, agent: 0 } } as DailyTraceCount
+  );
+
+  return {
+    totalTraces,
+    totalAnchored,
+    activeDays,
+    avgPerDay: activeDays > 0 ? +(totalTraces / activeDays).toFixed(1) : 0,
+    peakDay: peakDay.date,
+    peakDayCount: peakDay.total,
+  };
+}
