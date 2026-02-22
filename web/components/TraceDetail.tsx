@@ -13,6 +13,7 @@ interface TraceDetailProps {
     files?: number;
     solanaTx?: string;
     hash?: string;
+    label?: string;
   };
 }
 
@@ -21,14 +22,29 @@ export function TraceDetail({ trace }: TraceDetailProps) {
   
   const formatTimestamp = (ts?: string) => {
     if (!ts) return "—";
-    return new Date(ts).toLocaleString("en-GB", {
-      hour12: false,
-      day: "2-digit",
-      month: "short",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    try {
+      const parsed = new Date(ts);
+      if (isNaN(parsed.getTime())) return "Invalid date";
+      return parsed.toLocaleString("en-GB", {
+        hour12: false,
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    } catch {
+      return "—";
+    }
   };
+
+  // Edge case: trace with completely empty ID
+  const displayId = trace.id && trace.id.length >= 8
+    ? trace.id.slice(0, 8)
+    : trace.id || "unknown";
+
+  const displayFiles = typeof trace.files === 'number' && trace.files >= 0
+    ? trace.files
+    : "—";
 
   return (
     <>
@@ -37,12 +53,12 @@ export function TraceDetail({ trace }: TraceDetailProps) {
         className="grid grid-cols-6 gap-4 px-6 py-4 text-left hover:bg-slate-800/40 transition-all w-full border-b border-slate-800/50"
       >
         <div className="flex items-center gap-2 min-w-0">
-          <span className="text-xs font-mono text-emerald-400 truncate">{trace.id.slice(0, 8)}...</span>
+          <span className="text-xs font-mono text-emerald-400 truncate">{displayId}...</span>
         </div>
         <span className="text-xs text-slate-300">{formatTimestamp(trace.timestamp)}</span>
         <span className="text-xs font-mono text-sky-400 truncate">{trace.commitSha?.slice(0, 7) ?? "—"}</span>
-        <span className="text-xs text-slate-300 capitalize">{trace.source}</span>
-        <span className="text-xs text-slate-300 text-center">{trace.files ?? "—"}</span>
+        <span className="text-xs text-slate-300 capitalize">{trace.source || "unknown"}</span>
+        <span className="text-xs text-slate-300 text-center">{displayFiles}</span>
         <div className="flex items-center justify-end gap-2">
           {trace.solanaTx ? (
             <span className="text-xs text-emerald-400 font-semibold">✓</span>
