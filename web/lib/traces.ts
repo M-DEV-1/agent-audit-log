@@ -137,6 +137,28 @@ async function listJsonFiles(localDir: string, remoteDir: string): Promise<Trace
   return listGitHubJsonFiles(remoteDir);
 }
 
+// ── Shared trace parsing helpers ─────────────────────────────────
+
+function extractSolanaTx(metadata?: Record<string, unknown>): string | undefined {
+  if (!metadata) return undefined;
+  return (
+    (metadata.solana_tx as string | undefined) ??
+    ((metadata.solana_anchor as { tx_hash?: string })?.tx_hash ?? undefined) ??
+    (metadata.anchor_tx as string | undefined)
+  );
+}
+
+function extractFilePaths(files?: Array<{ path?: string }>): string[] | undefined {
+  if (!Array.isArray(files)) return undefined;
+  return files.map((f) => f?.path).filter(Boolean) as string[];
+}
+
+function safeFileCount(files?: unknown): number | undefined {
+  return Array.isArray(files) ? files.length : undefined;
+}
+
+// ── Trace loaders ────────────────────────────────────────────────
+
 async function loadLegacyTraces(): Promise<TraceSummary[]> {
   const files = await listJsonFiles(LEGACY_TRACES_DIR, LEGACY_TRACES_REMOTE_DIR);
   const records = await Promise.all(
@@ -150,13 +172,9 @@ async function loadLegacyTraces(): Promise<TraceSummary[]> {
         timestamp: data.timestamp,
         commitSha: typeof data.git_revision === "string" ? data.git_revision : undefined,
         label: data.instruction ?? data.type ?? "Legacy Trace",
-        files: Array.isArray(data.files) ? data.files.length : undefined,
-        filePaths: Array.isArray(data.files)
-          ? (data.files.map((file) => file?.path).filter(Boolean) as string[])
-          : undefined,
-        solanaTx:
-          (data.metadata?.solana_tx as string | undefined) ??
-          (data.metadata?.anchor_tx as string | undefined),
+        files: safeFileCount(data.files),
+        filePaths: extractFilePaths(data.files),
+        solanaTx: extractSolanaTx(data.metadata),
         hash: data.hash,
         path: fileRef.path,
         extra: {
@@ -183,13 +201,9 @@ async function loadAgentTraces(): Promise<TraceSummary[]> {
         timestamp: data.timestamp,
         commitSha: data.vcs?.revision,
         label: data.metadata?.commit_message as string | undefined,
-        files: Array.isArray(data.files) ? data.files.length : undefined,
-        filePaths: Array.isArray(data.files)
-          ? data.files.map((file) => file.path)
-          : undefined,
-        solanaTx:
-          (data.metadata?.solana_tx as string | undefined) ??
-          ((data.metadata?.solana_anchor as { tx_hash?: string })?.tx_hash ?? undefined),
+        files: safeFileCount(data.files),
+        filePaths: extractFilePaths(data.files as Array<{ path?: string }>),
+        solanaTx: extractSolanaTx(data.metadata),
         hash: data.metadata?.trace_hash as string | undefined,
         path: fileRef.path,
         extra: {
