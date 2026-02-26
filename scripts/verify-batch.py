@@ -238,19 +238,77 @@ def export_json(report: BatchReport, output_path: str, elapsed: float = 0.0) -> 
     print(f"  {GREEN}JSON report saved:{NC} {output_path}")
 
 
+def get_commits_by_date(since: Optional[str] = None, until: Optional[str] = None) -> List[str]:
+    """Retrieve commits filtered by date range."""
+    cmd = ["git", "rev-list", "--reverse", "HEAD"]
+    if since:
+        cmd.append(f"--since={since}")
+    if until:
+        cmd.append(f"--until={until}")
+    try:
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, check=True,
+            cwd=str(PROJECT_ROOT),
+        )
+        return [l.strip() for l in result.stdout.strip().splitlines() if l.strip()]
+    except subprocess.CalledProcessError:
+        print(f"{RED}Error: failed to query commits by date{NC}", file=sys.stderr)
+        sys.exit(1)
+
+
+def filter_results(report: BatchReport, status_filter: Optional[str] = None) -> BatchReport:
+    """Filter report results by status (passed, failed, missing)."""
+    if not status_filter:
+        return report
+    allowed = set(s.strip() for s in status_filter.split(","))
+    filtered = BatchReport(commit_range=report.commit_range)
+    filtered.results = [r for r in report.results if r.status in allowed]
+    return filtered
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Batch trace verification")
-    parser.add_argument("range", nargs="?", default="HEAD~20..HEAD", help="Commit range")
+    parser = argparse.ArgumentParser(
+        description="Batch trace verification",
+        epilog="Examples:\n"
+               "  %(prog)s HEAD~10..HEAD\n"
+               "  %(prog)s --since 2026-02-01 --until 2026-02-28\n"
+               "  %(prog)s --all --status failed,missing --json report.json\n",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("range", nargs="?", default="HEAD~20..HEAD", help="Commit range (e.g. HEAD~10..HEAD)")
     parser.add_argument("--all", action="store_true", help="Verify all commits")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--json", dest="json_out", metavar="FILE",
                         help="Export results to JSON file")
+    parser.add_argument("--since", metavar="DATE",
+                        help="Only verify commits after DATE (e.g. 2026-02-01)")
+    parser.add_argument("--until", metavar="DATE",
+                        help="Only verify commits before DATE (e.g. 2026-02-28)")
+    parser.add_argument("--status", metavar="STATUS",
+                        help="Filter results by status: passed,failed,missing (comma-separated)")
     args = parser.parse_args()
 
-    commit_range = "HEAD~500..HEAD" if args.all else args.range
-    t0 = time.monotonic()
-    report = run_batch(commit_range, verbose=args.verbose)
-    elapsed = time.monotonic() - t0
+    # Determine commit source: date-based or range-based
+    if args.since or args.until:
+        commits = get_commits_by_date(since=args.since, until=args.until)
+        commit_range = f"date:{args.since or '*'}..{args.until or '*'}"
+        report = BatchReport(commit_range=commit_range)
+        print(f"\n{BLUE}{BOLD}Scanning {len(commits)} commits (date filter)…{NC}\n")
+        for sha in commits:
+            trace_file = find_trace_file(sha)
+            if trace_file is None:
+                report.results.append(VerifyResult(commit=sha, status="missing", message="No trace file"))
+            else:
+                report.results.append(verify_trace(trace_file, verbose=args.verbose))
+    else:
+        commit_range = "HEAD~500..HEAD" if args.all else args.range
+        t0 = time.monotonic()
+        report = run_batch(commit_range, verbose=args.verbose)
+
+    t0_report = time.monotonic()
+    if args.status:
+        report = filter_results(report, args.status)
+    elapsed = time.monotonic() - t0_report
     print_report(report, elapsed=elapsed)
 
     if args.json_out:
