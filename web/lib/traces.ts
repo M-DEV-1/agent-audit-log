@@ -50,6 +50,34 @@ export interface TraceAnalytics {
   latestCommit?: string;
 }
 
+// ── Trace metadata helpers ───────────────────────────────────────
+
+/** Check whether a trace has a confirmed Solana anchor. */
+export function isAnchored(trace: TraceSummary): boolean {
+  return typeof trace.solanaTx === "string" && trace.solanaTx.length > 0;
+}
+
+/** Check whether a trace is an RFC 0.1.0 agent trace (vs legacy). */
+export function isRfcTrace(trace: TraceSummary): boolean {
+  return trace.source === "agent";
+}
+
+/** Safely retrieve a nested metadata value from the extra map. */
+export function getExtraField<T = unknown>(
+  trace: TraceSummary,
+  key: string,
+): T | undefined {
+  return trace.extra?.[key] as T | undefined;
+}
+
+/** Format a trace for one-line log output (useful for scripts/debugging). */
+export function traceOneLiner(trace: TraceSummary): string {
+  const sha = trace.commitSha?.slice(0, 7) ?? "-------";
+  const anchor = isAnchored(trace) ? "⚓" : " ";
+  const ts = trace.timestamp?.slice(0, 10) ?? "----------";
+  return `${anchor} ${sha} ${ts} [${trace.source}] ${trace.id.slice(0, 8)}`;
+}
+
 type LegacyTraceJson = {
   trace_id?: string;
   timestamp?: string;
