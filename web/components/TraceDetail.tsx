@@ -50,7 +50,9 @@ export function TraceDetail({ trace }: TraceDetailProps) {
     <>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="grid grid-cols-6 gap-4 px-6 py-4 text-left hover:bg-slate-800/40 transition-all w-full border-b border-slate-800/50"
+        aria-label={`${expanded ? 'Collapse' : 'Expand'} trace ${displayId}`}
+        aria-expanded={expanded}
+        className="grid grid-cols-6 gap-4 px-6 py-4 text-left hover:bg-slate-800/40 transition-all duration-150 w-full border-b border-slate-800/50 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-500"
       >
         <div className="flex items-center gap-2 min-w-0">
           <span className="text-xs font-mono text-emerald-400 truncate">{displayId}...</span>
@@ -66,7 +68,7 @@ export function TraceDetail({ trace }: TraceDetailProps) {
             <span className="text-xs text-slate-500">—</span>
           )}
           <svg
-            className={`w-4 h-4 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`}
+            className={`w-4 h-4 text-slate-400 transition-transform duration-200 ease-in-out ${expanded ? 'rotate-180' : 'rotate-0'}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -77,7 +79,7 @@ export function TraceDetail({ trace }: TraceDetailProps) {
       </button>
       
       {expanded && (
-        <div className="px-6 py-5 bg-gradient-to-br from-slate-800/40 to-slate-900/40 border-b border-slate-700/50">
+        <div className="px-6 py-5 bg-gradient-to-br from-slate-800/40 to-slate-900/40 border-b border-slate-700/50 animate-in fade-in-0 duration-200">
           <div className="grid grid-cols-2 gap-6 text-xs">
             <div>
               <p className="text-slate-500 uppercase tracking-wider mb-1">Trace UUID</p>
